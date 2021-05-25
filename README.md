@@ -1,6 +1,6 @@
 Isotop Arbetsprov
 ===============================
-Bygg en app i React där man kan skriva in namnet på en stad och visar vilket väder det är där.
+Bygg en app i React där man kan skriva in namnet på en stad och som visar vilket väder det är där.
 Sidan ska vara responsiv och se bra ut i alla storlekar (mobil till desktop).
 
 Resultaten av sökningarna ska sparas och man ska även kunna ta bort dom.
