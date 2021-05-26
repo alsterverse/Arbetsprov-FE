@@ -10,8 +10,9 @@ Resultaten av sökningarna ska sparas och man ska även kunna ta bort dom.
 * Om temperaturen är mellan 1 och 19 grader ska kortet vara gult
 * Om temperaturen är 0 grader och nedåt ska kortet vara blått
 * Om det regnar ska kortet vara blått oavsett temperatur
-* Om staden du söker på inte ger något svar från API:et ska ett meddelande visas under input-fältet
+* Om staden du söker på inte ger något svar från API:et ska ett meddelandet "Det finns ingen stad som matchar din sökning" visas under input-fältet
 * Hitta en ikon i Figma-dokumentet som matchar resultatet av sökningen. Använd "×" som fallback.
+* Städerna ska sorteras efter temperatur
 * I desktopversionen ska korten stackas i rader om 3 och vara lika stora.
 * Appen ska fungera och se likadan ut i Chrome, Firefox, Edge och Safari.
 * Använd TypeScript om du vill (ej ett krav)
