@@ -8,7 +8,7 @@ Resultaten av sökningarna ska sparas och man ska även kunna ta bort dom.
 ## Detaljer
 *	Om temperaturen är >= 20 grader ska kortet vara rött
 * Om temperaturen är >= 1 och <= 19 grader ska kortet vara gult
-* Om temperaturen är <= 0 ska kortet vara blått
+* Om temperaturen är <= 0 grader ska kortet vara blått
 * Om staden du söker på inte finns ska ett meddelande visas under input-fältet
 * Hitta en ikon i Figma-dokumentet som matchar resultatet av sökningen. Använd "×" som fallback.
 * I desktopversionen ska korten stackas i rader om 3 och vara lika stora.
