@@ -22,7 +22,7 @@ I Figma kan du exportera ikoner och liknande som SVG.
 * [Designdokument](https://www.figma.com/file/iDOGMdsvp7WAR0g5spLcno/Arbetsprov?node-id=1%3A675)
 
 ## Resurser:
-* Väder-API - https://www.apixu.com/
+* Väder-API - https://weatherstack.com/
 * Typsnitt Roboto - https://fonts.google.com/specimen/Roboto
 
 ## Vad letar vi efter?
