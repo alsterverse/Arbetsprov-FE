@@ -1,0 +1,45 @@
+h1 {
+  font-weight: 700;
+}
+
+input {
+  border: none;
+  padding: 20px 30px 20px 30px;
+  font-size: 20px;
+  color: var(--main-font-color);
+  margin-top: 30px;
+  margin-bottom: 30px;
+  min-width: 40%;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+}
+
+label {
+  margin-right: 30px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+#SaveSearch {
+  background: transparent;
+  border: none;
+  margin-left: -30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#SearchButton {
+  display: block;
+  margin: auto;
+  background-color: rgb(228, 115, 115);
+  border: none;
+}
+
+@media only screen and (max-width: 375px) {
+  /* input {
+    width: 90%;
+  } */
+}

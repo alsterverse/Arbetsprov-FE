@@ -1,0 +1,20 @@
+:root {
+  --main-bg-color: #eeeeee;
+  --main-font-color: #000000;
+  --weather-item-info: #ffffff;
+  --yellow: #fac710;
+  --blue: #2d9bf0;
+  --red: #f24726;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+h1 {
+  margin: 0px;
+}

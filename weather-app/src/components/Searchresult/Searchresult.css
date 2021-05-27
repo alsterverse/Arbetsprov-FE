@@ -1,0 +1,136 @@
+div.Searchresult {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0px 120px 0px 120px;
+}
+
+p {
+  width: 100%;
+  font-size: 20px;
+}
+
+.WeatherItem {
+  border-radius: 2px;
+  padding: 10px;
+  color: var(--weather-item-info);
+  margin: 10px;
+  min-width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.WeatherItem > div {
+  margin-right: 50px;
+}
+
+.hightemperature {
+  background-color: var(--red);
+}
+
+.mediumtemperature {
+  background-color: var(--yellow);
+}
+
+.lowtemperature,
+.raining {
+  background-color: var(--blue) !important;
+}
+
+.ClosingIcon {
+  display: block;
+  width: 30px;
+  height: 30px;
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.WeatherIcon {
+  margin: 40px 65px 40px 40px;
+  border-radius: 15px;
+}
+
+.WeatherIcon.sun::before {
+  display: block;
+  content: "";
+  background-image: url("../../assets/Sun.svg");
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.Degrees {
+  font-size: 62px;
+  margin-right: 50px;
+}
+
+.NameOfCity {
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-right: 50px;
+}
+
+@media only screen and (max-width: 769px) {
+  div.Searchresult {
+    margin: 0px;
+  }
+
+  .WeatherItem {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .WeatherItem > div {
+    margin-right: 30px;
+  }
+
+  .WeatherIcon {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+  }
+
+  .Degrees,
+  .NameOfCity {
+    margin-right: 0px;
+  }
+
+  .ClosingIcon {
+    margin-left: auto;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  div.Searchresult {
+    margin: 20px;
+  }
+
+  .WeatherItem {
+    width: 100%;
+    margin: 0px;
+    margin-bottom: 10px;
+  }
+
+  .WeatherItem > div {
+    margin-right: 0px;
+  }
+
+  .WeatherIcon {
+    margin-right: 20px !important;
+  }
+
+  .WeatherIcon.sun::before {
+    background-size: 60px 60px;
+    height: 60px;
+    width: 60px;
+  }
+
+  .Degrees,
+  .NameOfCity {
+    margin-right: 0px;
+  }
+}
