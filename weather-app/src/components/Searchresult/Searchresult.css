@@ -41,12 +41,9 @@ p {
 
 .DeleteIcon {
   display: block;
-  width: 30px;
-  height: 30px;
   align-self: flex-start;
   background: transparent;
   border: none;
-  margin-right: 15px;
   cursor: pointer;
 }
 
