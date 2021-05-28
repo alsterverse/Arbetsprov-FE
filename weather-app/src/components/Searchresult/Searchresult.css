@@ -39,7 +39,7 @@ p {
   background-color: var(--blue) !important;
 }
 
-.ClosingIcon {
+.DeleteIcon {
   display: block;
   width: 30px;
   height: 30px;
@@ -146,7 +146,7 @@ p {
     margin-right: 0px;
   }
 
-  .ClosingIcon {
+  .DeleteIcon {
     margin-left: auto;
   }
 }

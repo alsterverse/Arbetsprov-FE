@@ -9,48 +9,62 @@ const App = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
-  const [savedWeatherData] = useState([]);
+  const [savedWeatherData, setSavedWeatherData] = useState([]);
 
   const createItem = () => {
-  // localStorage.setItem('');
+    let localStorageList = localStorage.getItem('WeatherSearch');
+    const parsedLocalStorageList = JSON.parse(localStorageList);
 
-  savedWeatherData.push(weatherData);
+    if (localStorageList == null) {
+      savedWeatherData.push(weatherData);
+      const stringifiedWeatherData = JSON.stringify(savedWeatherData);
+          localStorage.setItem('WeatherSearch', stringifiedWeatherData)
+    } else {
+      let isArray = Array.isArray(parsedLocalStorageList);
+      if(isArray === false) {
+        savedWeatherData.push(localStorageList)
+        savedWeatherData.push(weatherData)
+        localStorage.setItem('WeatherSearch', JSON.stringify(savedWeatherData));
+      } else {
+        parsedLocalStorageList.push(weatherData);
+        localStorage.setItem('WeatherSearch', JSON.stringify(parsedLocalStorageList));
+      }
+    }
+    setSearch('');
+    setWeatherData(null);
+    setSavedWeatherData(parsedLocalStorageList);
+  }
 
-  console.log(savedWeatherData);
-  const stringifiedWeatherData = JSON.stringify(savedWeatherData);
+  const removeItem = (e) => {
+    let localStorageList = localStorage.getItem('WeatherSearch');
+    const parsedLocalStorageList = JSON.parse(localStorageList);
 
+    parsedLocalStorageList.splice(e,1);
 
+    localStorage.setItem('WeatherSearch', JSON.stringify(parsedLocalStorageList));
 
-  console.log(stringifiedWeatherData);
-  localStorage.setItem('WeatherSearch', stringifiedWeatherData)
-
+    setSavedWeatherData(parsedLocalStorageList);
   }
 
   const getData = e => {
     e.preventDefault();
-    console.log(e);
-    console.log('DU har tryck på enter')
     
     fetch(`http://api.weatherstack.com/current?access_key=${API_KEY}&query=${search}`)
     .then(res => res.json())
     .then(data => {
-      console.log(data)
       if(data.error){
         setError('Det finns ingen stad som matchar din sökning.');
         return;
       } else {
         setWeatherData(data);
-        // const stringifiedWeatherData = JSON.stringify(weatherData);
-        // console.log(stringifiedWeatherData);
       }
     });
-    setSearch("");
   };
 
   return(
     <div className="App">
         <Searchbar search={search} setSearch={setSearch} getData={getData} createItem={createItem}/>
-        <Searchresult weatherData={weatherData} error={error} search={search} setSearch={setSearch} getData={getData}/>
+        <Searchresult savedWeatherData={savedWeatherData} weatherData={weatherData} error={error} search={search} setSearch={setSearch} getData={getData} removeItem={removeItem}/>
     </div>
   )
 }
