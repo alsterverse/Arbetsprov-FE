@@ -1,7 +1,9 @@
 import './Searchbar.css';
 import React from 'react';
 
-const Searchbar = ({search, setSearch, getData, createItem }) => {
+const Searchbar = ({weatherData, search, setSearch, getData, createItem }) => {
+
+  const isEnabled = weatherData >= 0;
 
 return(
     <div className="Searchbar">
@@ -16,7 +18,7 @@ return(
         value={search} 
         onChange={e => setSearch(e.target.value)}
         onKeyPress={e => e.key === 'Enter'|| e.keyCode ==='13' ? getData : null} />
-        <button type="button" id="SaveSearch" onClick={createItem}>+</button>
+        <button disabled={isEnabled} type="button" id="SaveSearch" onClick={createItem}>+</button>
       </form>
     </div>
   );

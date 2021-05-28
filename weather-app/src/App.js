@@ -63,7 +63,7 @@ const App = () => {
 
   return(
     <div className="App">
-        <Searchbar search={search} setSearch={setSearch} getData={getData} createItem={createItem}/>
+        <Searchbar weatherData={weatherData} search={search} setSearch={setSearch} getData={getData} createItem={createItem}/>
         <Searchresult savedWeatherData={savedWeatherData} weatherData={weatherData} error={error} search={search} setSearch={setSearch} getData={getData} removeItem={removeItem}/>
     </div>
   )
