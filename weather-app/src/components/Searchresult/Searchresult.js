@@ -1,58 +1,45 @@
-// import './App.css';
 import './Searchresult.css';
+import React from 'react';
 import ClosingIcon from '../../assets/CloseButton.svg';
 
-function Searchresult() {
+const SearchResult = ({weatherData, error}) => {
+  
   return (
-    <div className="Searchresult">
+    <div>
+            {weatherData !== null ? (
+              <React.Fragment>
+                  <div className="Searchresult">
 
-      {/* <p>
-        Det finns ingen stad som matchar din sökning.
-      </p> */}
+                    <div className={`WeatherItem 
+                    
+                    ${(weatherData.current.temperature >= '20') ? `hightemperature` : ''}
+                    ${(weatherData.current.temperature <= '19') ? `mediumtemperature` : ''}
+                    ${(weatherData.current.temperature <= '0') ? `lowtemperature` : ''}
+                    ${(weatherData.current.weather_descriptions == "Rain") ? `raining` : ''}`                    
+                  }>     
+                      {/* <div className={`WeatherIcon
+                      
+                      {if (${(weatherData.current.weather_descriptions == 'Sunny') `sun`) else ( {`fallback`})
 
-        {/* Dynamiskt klassnamn m villkor baserat på temperatur */}
-      <div className="WeatherItem hightemperature">      
-          <div className="WeatherIcon sun"></div>
-          <div>
-            <div className="Degrees">26</div>
-            <div className="NameOfCity">RIO</div>
-          </div>
-        <button type="button" className="ClosingIcon">
-          <img src={ClosingIcon} alt="ClosingIcon" />
-        </button>
-      </div>
-      <div className="WeatherItem mediumtemperature">      
-          <div className="WeatherIcon"></div>
-          <div>
-            <div className="Degrees">26</div>
-            <div className="NameOfCity">RIO</div>
-          </div>
-          <button type="button" className="ClosingIcon">
-          <img src={ClosingIcon} alt="ClosingIcon" />
-        </button>
-      </div>
-      <div className="WeatherItem lowtemperature">      
-          <div className="WeatherIcon"></div>
-          <div>
-            <div className="Degrees">26</div>
-            <div className="NameOfCity">RIO</div>
-          </div>
-          <button type="button" className="ClosingIcon">
-            <img src={ClosingIcon} alt="ClosingIcon" />
-        </button>
-      </div> 
-      <div className="WeatherItem lowtemperature">      
-          <div className="WeatherIcon"></div>
-          <div>
-            <div className="Degrees">26</div>
-            <div className="NameOfCity">RIO</div>
-          </div>
-          <button type="button" className="ClosingIcon">
-            <img src={ClosingIcon} alt="ClosingIcon" />
-        </button>
-      </div> 
+                      `} /> */}
+
+                      <div className={`WeatherIcon ${(weatherData.current.weather_descriptions)}`} />
+                      <div>
+                        <div className="Degrees">{weatherData.current.temperature}</div>
+                        <div className="NameOfCity">{weatherData.location.name}</div>
+                      </div>
+                      <button type="button" className="ClosingIcon">
+                      <img src={ClosingIcon} alt="ClosingIcon" />
+                      </button>
+                    </div>
+                  </div>
+                </React.Fragment>
+            ) : (
+                <p>{error}</p>
+            )
+        }
     </div>
   );
-}
+};
 
-export default Searchresult;
+export default SearchResult;

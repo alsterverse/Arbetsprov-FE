@@ -1,1 +1,0 @@
-// Här skickas all data till och kan nås från andra komponenter

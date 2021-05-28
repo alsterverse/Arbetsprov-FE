@@ -19,6 +19,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: rgba(132, 255, 161, 0.789);
 }
 
 .WeatherItem > div {
@@ -54,10 +55,56 @@ p {
   border-radius: 15px;
 }
 
-.WeatherIcon.sun::before {
+.WeatherIcon.Sunny::before,
+.WeatherIcon.Clear::before {
   display: block;
   content: "";
   background-image: url("../../assets/Sun.svg");
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.WeatherIcon.Overcast::before {
+  display: block;
+  content: "";
+  background-image: url("../../assets/Overcast.svg");
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+/* Partly cloudy */
+.WeatherIcon.Partly::before {
+  display: block;
+  content: "";
+  background-image: url("../../assets/PartlyCloudy.svg");
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+/* Patchy rain possible */
+.WeatherIcon.Patchy::before {
+  display: block;
+  content: "";
+  background-image: url("../../assets/PatchyRainPossible.svg");
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.WeatherIcon.Rain::before {
+  display: block;
+  content: "";
+  background-image: url("../../assets/Rain.svg");
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.WeatherIcon::before {
+  display: block;
+  content: "";
+  background-image: url("../../assets/Fallback.svg");
   background-size: 80px 80px;
   height: 80px;
   width: 80px;

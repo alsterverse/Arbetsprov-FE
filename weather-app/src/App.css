@@ -18,3 +18,23 @@ body {
 h1 {
   margin: 0px;
 }
+
+div.App {
+  margin-top: 200px;
+  /* margin: 200px 120px 200px 120px; */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+@media only screen and (max-width: 769px) {
+  div.App {
+    margin: 20px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  div.App {
+    margin: 50px 20px 160px 20px !important;
+  }
+}
