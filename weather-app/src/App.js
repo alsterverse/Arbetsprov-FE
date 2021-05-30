@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer.js';
 
 const App = () => {
 
-  const API_KEY = "e12ae8aeaf06dc4511ff0f42a50608e2";
+  const AccessKey = "4272cdb329d2d79f8bf8bdcfd6dc1d96";
   const [weatherData, setWeatherData] = useState(null);
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
@@ -15,7 +15,6 @@ const App = () => {
   const createItem = () => {
     let localStorageList = localStorage.getItem('WeatherSearch');
     const parsedLocalStorageList = JSON.parse(localStorageList);
-
     if (localStorageList == null) {
       savedWeatherData.push(weatherData);
       const stringifiedWeatherData = JSON.stringify(savedWeatherData);
@@ -40,18 +39,14 @@ const App = () => {
   const removeItem = (e) => {
     let localStorageList = localStorage.getItem('WeatherSearch');
     const parsedLocalStorageList = JSON.parse(localStorageList);
-
     parsedLocalStorageList.splice(e,1);
-
     localStorage.setItem('WeatherSearch', JSON.stringify(parsedLocalStorageList));
-
     setSavedWeatherData(parsedLocalStorageList);
   }
 
   const getData = e => {
-    e.preventDefault();
-    
-    fetch(`http://api.weatherstack.com/current?access_key=${API_KEY}&query=${search}`)
+    e.preventDefault();    
+    fetch(`http://api.weatherstack.com/current?access_key=${AccessKey}&query=${search}`)
     .then(res => res.json())
     .then(data => {
       if(data.error){
@@ -75,44 +70,3 @@ const App = () => {
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const access_key = '4b40637d336dc05331ae1c8f35a51d4c';
-
-// class App extends React.Component {
-//   state = {
-//       temperature: undefined,
-//       city: undefined,
-//       description: undefined,
-//       error: undefined
-//   }
-
-//   getWeatherData = async (e) => {
-//       e.preventDefault();
-//       const city = e.target.elements.city.value;
-//       const api_call = await fetch(`http://api.weatherstack.com/current?access_key=${access_key}&query=${city}`)
-//   }
-
-//   render(){
-//       return(
-//           <React.Fragment>
-//               <Searchbar />
-//               <Searchresult />
-//           </React.Fragment>
-//       )
-//   }
-// }
-
-// export default App;

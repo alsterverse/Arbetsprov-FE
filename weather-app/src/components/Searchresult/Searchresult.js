@@ -32,7 +32,7 @@ const SearchResult = ({createItem, weatherData, error, removeItem}) => {
                   <button type="button" className="AddButton" onClick={createItem} />
                 </div>
               </React.Fragment>
-            ) : ( <span id="error">{error}</span> )
+            ) : ( <span id="ErrorMessage">{error}</span> )
           }
           {parsedWeatherData && 
               (parsedWeatherData.map((weatherCard, i) => {
@@ -46,12 +46,11 @@ const SearchResult = ({createItem, weatherData, error, removeItem}) => {
                     ${(weatherCard.current.weather_descriptions == "Patchy") ? `Raining` : ''}
                     ${(weatherCard.current.weather_descriptions == "Moderate or heavy rain shower") ? `Raining` : ''}
                     ${(weatherCard.current.weather_descriptions == "Light Rain, Light Rain And Hail With Thunderstorm, Squalls") ? `Raining` : ''}
-                    
-                  `}>        
+                    `}>        
                     <div className={`WeatherIcon 
                       ${(weatherCard.current.weather_descriptions)}
                       ${(weatherCard.current.is_day === 'no') ? 'Is_Night' : ''}
-                    `}/>
+                      `} />
                     <div>
                       <div className="Degrees">{weatherCard.current.temperature}</div>
                       <div className="NameOfCity">{weatherCard.location.name}</div>

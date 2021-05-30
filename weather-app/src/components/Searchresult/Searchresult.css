@@ -4,13 +4,9 @@ div.Searchresult {
   justify-content: center;
 }
 
-p {
+#ErrorMessage {
   width: 100%;
-  font-size: 20px;
-}
-
-#error {
-  width: 100%;
+  margin: 10px;
 }
 
 .WeatherItem {
@@ -22,7 +18,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(132, 255, 161, 0.789);
+  background-color: var(--fallback);
   box-sizing: border-box;
 }
 
@@ -121,12 +117,12 @@ p {
     margin-right: 0px;
   }
 
-  .NameOfCity {
-    font-size: 14px;
-  }
-
   .Degrees {
     font-size: 46px;
+  }
+
+  .NameOfCity {
+    font-size: 14px;
   }
 
   .Degrees,

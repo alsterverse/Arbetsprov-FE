@@ -5,6 +5,7 @@
   --yellow: #fac710;
   --blue: #2d9bf0;
   --red: #f24726;
+  --fallback: #78d68e;
 }
 
 body {
@@ -22,7 +23,7 @@ h1 {
 div.App {
   width: 100%;
   /* margin: 200px 120px 0px 120px; */
-  height: 100vh;
+  min-height: 100vh;
   margin-top: 400px;
   /* display: flex;
   flex-direction: column; */

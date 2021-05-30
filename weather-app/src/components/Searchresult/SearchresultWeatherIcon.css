@@ -6,67 +6,81 @@
 .WeatherIcon::before,
 .WeatherIcon.Clear::before,
 .WeatherIcon.Fog::before,
-.WeatherIcon.Hale::before,
+.WeatherIcon.Hail::before,
+.WeatherIcon.Hurricane::before,
 .WeatherIcon.Is_Night::before,
+.WeatherIcon.Mist::before,
+.WeatherIcon.Moon::before,
 .WeatherIcon.Overcast::before,
 .WeatherIcon.Partly::before,
 .WeatherIcon.Patchy::before,
 .WeatherIcon.Rain::before,
 .WeatherIcon.Shower::before,
-.WeatherIcon.Sunny::before {
+.WeatherIcon.Snow::before,
+.WeatherIcon.Storm::before,
+.WeatherIcon.Sunny::before,
+.WeatherIcon.Tornado::before {
   display: block;
   content: "";
   background-size: 80px 80px;
   height: 80px;
   width: 80px;
 }
-
 .WeatherIcon::before {
-  background-image: url("../../assets/Fallback.svg");
+  background-image: url("../../assets/WeatherIcons/Fallback.svg");
 }
 
 .WeatherIcon.Clear::before,
 .WeatherIcon.Sunny::before {
-  background-image: url("../../assets/Sun.svg");
+  background-image: url("../../assets/WeatherIcons/Sun.svg");
 }
 
-.WeatherIcon.Fog::before {
-  background-image: url("../../assets/Fog.svg");
+.WeatherIcon.Fog::before,
+.WeatherIcon.Mist::before {
+  background-image: url("../../assets/WeatherIcons/Fog.svg");
 }
 
-.WeatherIcon.Hale::before {
-  background-image: url("../../assets/Hale.svg");
+.WeatherIcon.Hail::before {
+  background-image: url("../../assets/WeatherIcons/Hail.svg");
+}
+
+.WeatherIcon.Hurricane::before {
+  background-image: url("../../assets/WeatherIcons/Hurricane.svg");
 }
 
 .WeatherIcon.Is_Night::before {
-  background-image: url("../../assets/Moon.svg") !important;
+  background-image: url("../../assets/WeatherIcons/Moon.svg") !important;
 }
 
 .WeatherIcon.Overcast::before {
-  background-image: url("../../assets/Overcast.svg");
+  background-image: url("../../assets/WeatherIcons/Overcast.svg");
 }
 
-/* Partly cloudy */
 .WeatherIcon.Partly::before {
-  background-image: url("../../assets/PartlyCloudy.svg");
+  background-image: url("../../assets/WeatherIcons/PartlyCloudy.svg");
 }
 
-/* Patchy rain possible */
 .WeatherIcon.Patchy::before {
-  background-image: url("../../assets/PatchyRainPossible.svg");
+  background-image: url("../../assets/WeatherIcons/PatchyRainPossible.svg");
 }
 
 .WeatherIcon.Rain::before,
 .WeatherIcon.rain::before,
 .WeatherIcon.Shower::before {
-  background-image: url("../../assets/Rain.svg");
+  background-image: url("../../assets/WeatherIcons/Rain.svg");
 }
 
-/* @media only screen and (max-width: 430px) {
-  .WeatherIcon {
-    margin: 30px 0px 30px 30px;
-  }
-} */
+.WeatherIcon.Snow::before {
+  background-image: url("../../assets/WeatherIcons/Snow.svg");
+}
+
+.WeatherIcon.Storm::before {
+  background-image: url("../../assets/WeatherIcons/Storm.svg");
+}
+
+.WeatherIcon.Tornado::before {
+  background-image: url("../../assets/WeatherIcons/Tornado.svg");
+}
 
 @media only screen and (max-width: 430px) {
   .WeatherIcon {
@@ -76,13 +90,20 @@
   .WeatherIcon::before,
   .WeatherIcon.Clear::before,
   .WeatherIcon.Fog::before,
-  .WeatherIcon.Hale::before,
+  .WeatherIcon.Hail::before,
+  .WeatherIcon.Hurricane::before,
+  .WeatherIcon.Is_Night::before,
+  .WeatherIcon.Mist::before,
+  .WeatherIcon.Moon::before,
   .WeatherIcon.Overcast::before,
   .WeatherIcon.Partly::before,
   .WeatherIcon.Patchy::before,
   .WeatherIcon.Rain::before,
   .WeatherIcon.Shower::before,
-  .WeatherIcon.Sunny::before {
+  .WeatherIcon.Snow::before,
+  .WeatherIcon.Storm::before,
+  .WeatherIcon.Sunny::before,
+  .WeatherIcon.Tornado::before {
     background-size: 60px 60px;
     height: 60px;
     width: 60px;
