@@ -1,0 +1,24 @@
+div.Footer {
+  margin: 0px auto 0px auto;
+  display: block;
+  background-image: url("../../assets/Isotop.svg");
+  background-size: 231px 141px;
+  width: 231px;
+  height: 141px;
+}
+
+@media only screen and (max-width: 769px) {
+  div.Footer {
+    margin: 10px auto 0px auto;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  div.Footer {
+    margin: 0px auto 0px auto;
+    background-image: url("../../assets/Isotop-Small.svg");
+    background-size: 152px 93px;
+    width: 152px;
+    height: 93px;
+  }
+}

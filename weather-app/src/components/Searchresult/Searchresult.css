@@ -2,7 +2,6 @@ div.Searchresult {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 0px 120px 0px 120px;
 }
 
 p {
@@ -10,36 +9,41 @@ p {
   font-size: 20px;
 }
 
+#error {
+  width: 100%;
+}
+
 .WeatherItem {
   border-radius: 2px;
   padding: 10px;
   color: var(--weather-item-info);
-  margin: 10px;
-  min-width: 30%;
+  margin: 0px 15px 30px 15px;
+  min-width: 31%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: rgba(132, 255, 161, 0.789);
+  box-sizing: border-box;
 }
 
 .WeatherItem > div {
-  margin-right: 50px;
+  margin-right: 30px;
 }
 
-.hightemperature {
+.HighTemperature {
   background-color: var(--red);
 }
 
-.mediumtemperature {
+.MediumTemperature {
   background-color: var(--yellow);
 }
 
-.lowtemperature,
-.raining {
+.LowTemperature,
+.Raining {
   background-color: var(--blue) !important;
 }
 
-.DeleteIcon {
+.DeleteButton {
   display: block;
   align-self: flex-start;
   background: transparent;
@@ -47,134 +51,92 @@ p {
   cursor: pointer;
 }
 
-.WeatherIcon {
-  margin: 40px 65px 40px 40px;
+.DeleteButton::before {
+  display: block;
+  content: "";
+  background-color: transparent;
   border-radius: 15px;
+  background-image: url("../../assets/Delete.svg");
+  background-size: 30px 30px;
+  height: 30px;
+  width: 30px;
 }
 
-.WeatherIcon.Sunny::before,
-.WeatherIcon.Clear::before {
+.AddButton {
   display: block;
-  content: "";
-  background-image: url("../../assets/Sun.svg");
-  background-size: 80px 80px;
-  height: 80px;
-  width: 80px;
+  align-self: flex-start;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.WeatherIcon.Overcast::before {
+.AddButton::before {
   display: block;
   content: "";
-  background-image: url("../../assets/Overcast.svg");
-  background-size: 80px 80px;
-  height: 80px;
-  width: 80px;
-}
-/* Partly cloudy */
-.WeatherIcon.Partly::before {
-  display: block;
-  content: "";
-  background-image: url("../../assets/PartlyCloudy.svg");
-  background-size: 80px 80px;
-  height: 80px;
-  width: 80px;
-}
-/* Patchy rain possible */
-.WeatherIcon.Patchy::before {
-  display: block;
-  content: "";
-  background-image: url("../../assets/PatchyRainPossible.svg");
-  background-size: 80px 80px;
-  height: 80px;
-  width: 80px;
+  background-color: white;
+  border-radius: 15px;
+  background-image: url("../../assets/AddBlack.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 15px;
+  padding: 7.5px;
 }
 
-.WeatherIcon.Rain::before {
-  display: block;
-  content: "";
-  background-image: url("../../assets/Rain.svg");
-  background-size: 80px 80px;
-  height: 80px;
-  width: 80px;
-}
-
-.WeatherIcon::before {
-  display: block;
-  content: "";
-  background-image: url("../../assets/Fallback.svg");
-  background-size: 80px 80px;
-  height: 80px;
-  width: 80px;
+.Degrees,
+.NameOfCity {
+  width: 150px;
 }
 
 .Degrees {
   font-size: 62px;
-  margin-right: 50px;
 }
 
 .NameOfCity {
   font-weight: 900;
   text-transform: uppercase;
-  margin-right: 50px;
 }
 
-@media only screen and (max-width: 769px) {
-  div.Searchresult {
-    margin: 0px;
-  }
-
-  .WeatherItem {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .WeatherItem > div {
-    margin-right: 30px;
-  }
-
-  .WeatherIcon {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 30px;
-  }
-
-  .Degrees,
-  .NameOfCity {
-    margin-right: 0px;
-  }
-
-  .DeleteIcon {
+@media only screen and (max-width: 1104px) {
+  .DeleteIcon,
+  .AddIcon {
     margin-left: auto;
   }
 }
 
-@media only screen and (max-width: 376px) {
-  div.Searchresult {
-    margin: 20px;
-  }
-
+@media only screen and (max-width: 769px) {
   .WeatherItem {
-    width: 100%;
-    margin: 0px;
-    margin-bottom: 10px;
+    margin: 0px 20px 20px 20px;
+  }
+}
+
+@media only screen and (max-width: 430px) {
+  .WeatherItem {
+    margin: 0px 0px 20px 0px;
+    width: 360px;
   }
 
   .WeatherItem > div {
     margin-right: 0px;
   }
 
-  .WeatherIcon {
-    margin-right: 20px !important;
+  .NameOfCity {
+    font-size: 14px;
   }
 
-  .WeatherIcon.sun::before {
-    background-size: 60px 60px;
-    height: 60px;
-    width: 60px;
+  .Degrees {
+    font-size: 46px;
   }
 
   .Degrees,
   .NameOfCity {
-    margin-right: 0px;
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .WeatherItem {
+    width: 90%;
   }
 }

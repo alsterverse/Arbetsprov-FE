@@ -1,7 +1,8 @@
 import './App.css';
 import React, {useState} from 'react';
-import Searchresult from '../src/components/Searchresult/Searchresult.js';
-import Searchbar from './components/Searchbar/Searchbar';
+import Searchresult from './components/Searchresult/Searchresult.js';
+import Searchbar from './components/Searchbar/Searchbar.js';
+import Footer from './components/Footer/Footer.js';
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
       }
     }
     setSearch('');
+    setError('');
     setWeatherData(null);
     setSavedWeatherData(parsedLocalStorageList);
   }
@@ -62,10 +64,13 @@ const App = () => {
   };
 
   return(
+    <React.Fragment>
     <div className="App">
         <Searchbar weatherData={weatherData} search={search} setSearch={setSearch} getData={getData} createItem={createItem}/>
-        <Searchresult savedWeatherData={savedWeatherData} weatherData={weatherData} error={error} search={search} setSearch={setSearch} getData={getData} removeItem={removeItem}/>
+        <Searchresult savedWeatherData={savedWeatherData} weatherData={weatherData} error={error} search={search} setSearch={setSearch} getData={getData} createItem={createItem} removeItem={removeItem}/>
     </div>
+    <Footer />
+    </React.Fragment>
   )
 }
 

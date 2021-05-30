@@ -18,7 +18,7 @@ return(
         value={search} 
         onChange={e => setSearch(e.target.value)}
         onKeyPress={e => e.key === 'Enter'|| e.keyCode ==='13' ? getData : null} />
-        <button disabled={isEnabled} type="button" id="SaveSearch" onClick={createItem}>+</button>
+        <button disabled={isEnabled}  onClick={createItem} type="button" className={`SaveSearch ${(isEnabled) ? 'disabled' : '' }`} />
       </form>
     </div>
   );

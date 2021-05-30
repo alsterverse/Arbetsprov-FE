@@ -7,9 +7,8 @@ input {
   padding: 20px 30px 20px 30px;
   font-size: 20px;
   color: var(--main-font-color);
-  margin-top: 30px;
-  margin-bottom: 30px;
-  min-width: 40%;
+  margin: 30px 0px 30px 0px;
+  min-width: 600px;
   border-radius: 5px;
 }
 
@@ -23,23 +22,41 @@ label {
   font-weight: 700;
 }
 
-#SaveSearch {
+.SaveSearch {
   background: transparent;
   border: none;
   margin-left: -30px;
-  cursor: pointer;
   font-size: 20px;
+  font-weight: 900;
+  cursor: text;
 }
 
-#SearchButton {
+.SaveSearch.disabled::before {
+  background-image: url("../../assets/AddDisabled.svg");
+  cursor: text;
+}
+
+.SaveSearch::before {
   display: block;
-  margin: auto;
-  background-color: rgb(228, 115, 115);
-  border: none;
+  content: "";
+  background-image: url("../../assets/AddBlack.svg");
+  background-size: 15px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
 }
 
-@media only screen and (max-width: 375px) {
-  /* input {
-    width: 90%;
-  } */
+@media only screen and (max-width: 1104px) {
+  input {
+    min-width: 70%;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .input {
+    min-width: 300px;
+    margin: 30px 0px 20px 0px;
+  }
 }

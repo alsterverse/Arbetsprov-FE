@@ -1,0 +1,90 @@
+.WeatherIcon {
+  margin: 50px 40px 50px 50px;
+  border-radius: 15px;
+}
+
+.WeatherIcon::before,
+.WeatherIcon.Clear::before,
+.WeatherIcon.Fog::before,
+.WeatherIcon.Hale::before,
+.WeatherIcon.Is_Night::before,
+.WeatherIcon.Overcast::before,
+.WeatherIcon.Partly::before,
+.WeatherIcon.Patchy::before,
+.WeatherIcon.Rain::before,
+.WeatherIcon.Shower::before,
+.WeatherIcon.Sunny::before {
+  display: block;
+  content: "";
+  background-size: 80px 80px;
+  height: 80px;
+  width: 80px;
+}
+
+.WeatherIcon::before {
+  background-image: url("../../assets/Fallback.svg");
+}
+
+.WeatherIcon.Clear::before,
+.WeatherIcon.Sunny::before {
+  background-image: url("../../assets/Sun.svg");
+}
+
+.WeatherIcon.Fog::before {
+  background-image: url("../../assets/Fog.svg");
+}
+
+.WeatherIcon.Hale::before {
+  background-image: url("../../assets/Hale.svg");
+}
+
+.WeatherIcon.Is_Night::before {
+  background-image: url("../../assets/Moon.svg") !important;
+}
+
+.WeatherIcon.Overcast::before {
+  background-image: url("../../assets/Overcast.svg");
+}
+
+/* Partly cloudy */
+.WeatherIcon.Partly::before {
+  background-image: url("../../assets/PartlyCloudy.svg");
+}
+
+/* Patchy rain possible */
+.WeatherIcon.Patchy::before {
+  background-image: url("../../assets/PatchyRainPossible.svg");
+}
+
+.WeatherIcon.Rain::before,
+.WeatherIcon.rain::before,
+.WeatherIcon.Shower::before {
+  background-image: url("../../assets/Rain.svg");
+}
+
+/* @media only screen and (max-width: 430px) {
+  .WeatherIcon {
+    margin: 30px 0px 30px 30px;
+  }
+} */
+
+@media only screen and (max-width: 430px) {
+  .WeatherIcon {
+    margin: 30px 0px 30px 30px;
+  }
+
+  .WeatherIcon::before,
+  .WeatherIcon.Clear::before,
+  .WeatherIcon.Fog::before,
+  .WeatherIcon.Hale::before,
+  .WeatherIcon.Overcast::before,
+  .WeatherIcon.Partly::before,
+  .WeatherIcon.Patchy::before,
+  .WeatherIcon.Rain::before,
+  .WeatherIcon.Shower::before,
+  .WeatherIcon.Sunny::before {
+    background-size: 60px 60px;
+    height: 60px;
+    width: 60px;
+  }
+}
