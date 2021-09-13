@@ -1,0 +1,15 @@
+.Card {
+    padding: 8px;
+    border: 1px solid black;
+    margin: 4px;
+}
+
+.Green {
+    color: white;
+    background-color: rgb(15, 87, 15);
+}
+
+.Red {
+    color: white;
+    background-color: rgba(148, 29, 29, 0.824)
+}
