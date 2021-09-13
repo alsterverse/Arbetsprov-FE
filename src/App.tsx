@@ -1,9 +1,10 @@
 import './App.css';
+import Dashboard from './containers/Dashboard/Dashboard';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello, this is app!</h1>
+      <Dashboard />
     </div>
   );
 }
