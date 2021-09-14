@@ -7,7 +7,6 @@ interface Props {
 }
 
 const CityCard: React.FC<Props> = (props) => {
-
     let cardColor: string;
 
     if(props.temperature <= 14) {

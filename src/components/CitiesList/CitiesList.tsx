@@ -12,13 +12,13 @@ interface Props {
 const CitiesList: React.FC<Props> = ({ cities }) => {
 
     return(
-        <div>
+        <>
             { cities.map(city => {
                 return <CityCard
                     {...city}
                     key={city.id} /> 
             })}
-        </div>
+        </>
     )
 }
 

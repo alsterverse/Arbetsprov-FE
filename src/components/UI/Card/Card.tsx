@@ -9,9 +9,9 @@ type Props = {
 const Card = ({children, color}: Props) => {
     let classList:string[] = [classes.Card]
 
-    if(color == "green") {
+    if(color === "green") {
         classList.push(classes.Green);
-    } else if (color == "red") {
+    } else if (color === "red") {
         classList.push(classes.Red);
     }
 
