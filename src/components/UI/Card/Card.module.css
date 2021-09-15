@@ -4,12 +4,17 @@
     margin: 4px;
 }
 
-.Green {
+.Yellow {
     color: white;
-    background-color: rgb(15, 87, 15);
+    background-color: rgb(218, 196, 32);
+}
+
+.Blue {
+    color: white;
+    background-color: rgba(25, 48, 181, 0.824)
 }
 
 .Red {
     color: white;
-    background-color: rgba(148, 29, 29, 0.824)
+    background-color: rgb(180, 16, 16);
 }

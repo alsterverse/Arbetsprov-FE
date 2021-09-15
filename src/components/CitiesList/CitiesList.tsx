@@ -1,15 +1,9 @@
 import CityCard from '../CityCard/CityCard';
 
-interface Props {
-    cities: {
-        id: number,
-        name: string,
-        temperature: number,
-        weather: string
-    }[] 
-}
+import { CitiesState } from './../../interfaces';
 
-const CitiesList: React.FC<Props> = ({ cities }) => {
+
+const CitiesList: React.FC<CitiesState> = ({ cities }) => {
 
     return(
         <>

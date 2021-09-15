@@ -7,12 +7,23 @@ type Props = {
 }
 
 const Card = ({children, color}: Props) => {
-    let classList:string[] = [classes.Card]
+    let classList:string[] = [classes.Card];
 
-    if(color === "green") {
-        classList.push(classes.Green);
-    } else if (color === "red") {
-        classList.push(classes.Red);
+    switch(color) {
+        case "Blue":
+            classList.push(classes.Blue);
+            break;
+
+        case "Yellow":
+            classList.push(classes.Yellow);
+            break;
+
+        case "Red":
+            classList.push(classes.Red);
+            break;
+
+        default:
+            break;
     }
 
     return(

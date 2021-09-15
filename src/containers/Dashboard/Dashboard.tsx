@@ -21,9 +21,19 @@ const runAPI = () => {
 const Dashboard = () => {
 
     const [cities, setCities] = useState<CitiesState["cities"]>([
-        { id: 123, name: "Stockholm", temperature: 14, weather: "sunny"},
-        { id: 456, name: "Copenhagen", temperature: 15, weather: "rainy"}
+        { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
+        { id: 456, name: "Copenhagen", temperature: 10, weatherDesc: "rainy"},
+        { id: 789, name: "Oslo", temperature: -4, weatherDesc: "cloudy"}
     ]);
+
+    const addCity = () => {
+        // Get data via API
+        // Add city to state
+    }
+
+    const removeCity = (id: number) => {
+        // Remove city from state
+    }
 
     return(
         <>

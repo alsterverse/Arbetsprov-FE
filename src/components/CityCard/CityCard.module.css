@@ -1,0 +1,10 @@
+.Container {
+    display: flex;
+}
+
+.Column {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}

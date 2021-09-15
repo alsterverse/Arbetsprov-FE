@@ -1,26 +1,33 @@
 import Card from '../UI/Card/Card';
-interface Props {
-    id: number;
-    name: string;
-    temperature: number;
-    weather: string;
-}
+import Icon from '../UI/Icon/Icon';
+import { CityData } from './../../interfaces';
 
-const CityCard: React.FC<Props> = (props) => {
+import classes from './CityCard.module.css';
+
+const CityCard: React.FC<CityData> = (props) => {
     let cardColor: string;
 
-    if(props.temperature <= 14) {
-        cardColor = "green";
+    // Decide color on card
+    if(props.temperature >= 20) {
+        cardColor = "Red";
+    } else if (props.temperature > 0) {
+        cardColor = "Yellow";
     } else {
-        cardColor ="red";
+        cardColor = "Blue";
     }
 
     return(
         <Card color={cardColor}>
-            <p>{props.id}</p>
-            <p>{props.name}</p>
-            <p>{props.weather}</p>
-            <p>{props.temperature}</p>
+            <div className={classes.Container}>
+                <div className={classes.Column}>
+                    <Icon type={props.weatherDesc} />
+                </div>
+                <div className={classes.Column}>
+                    <p>{props.name}</p>
+                    <p>{props.weatherDesc}</p>
+                    <p>{props.temperature}</p>
+                </div>
+            </div>
         </Card>
     )
 }
