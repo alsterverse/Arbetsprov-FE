@@ -1,0 +1,22 @@
+.Container {
+    width: 960px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Container > div {
+    width: 33%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    .Container {
+        flex-direction: column;
+    }
+
+    .Container > div {
+        width: 100%;
+    }
+}

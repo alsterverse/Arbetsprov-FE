@@ -16,6 +16,11 @@ const CityCard: React.FC<CityData> = (props) => {
         cardColor = "Blue";
     }
 
+    // Special case
+    if(props.weatherDesc === "rainy") {
+        cardColor = "Blue";
+    }
+
     return(
         <Card color={cardColor}>
             <div className={classes.Container}>

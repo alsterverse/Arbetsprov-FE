@@ -1,7 +1,14 @@
+import classes from './Grid.module.css';
 
-const Grid = () => {
+type Props = {
+    children: JSX.Element | JSX.Element[],
+}
+
+const Grid = ({children}: Props) => {
     return(
-        <div>This is Grid</div>
+        <div className={classes.Container}>
+            {children}
+        </div>
     )
 }
 

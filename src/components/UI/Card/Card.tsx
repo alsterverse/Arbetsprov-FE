@@ -6,7 +6,7 @@ type Props = {
     color?: string,
 }
 
-const Card = ({children, color}: Props) => {
+const Card: React.FC<Props> = ({children, color}: Props) => {
     let classList:string[] = [classes.Card];
 
     switch(color) {

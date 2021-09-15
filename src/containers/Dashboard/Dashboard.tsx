@@ -22,8 +22,9 @@ const Dashboard = () => {
 
     const [cities, setCities] = useState<CitiesState["cities"]>([
         { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
-        { id: 456, name: "Copenhagen", temperature: 10, weatherDesc: "rainy"},
-        { id: 789, name: "Oslo", temperature: -4, weatherDesc: "cloudy"}
+        { id: 456, name: "Copenhagen", temperature: 10, weatherDesc: "sunny"},
+        { id: 789, name: "Oslo", temperature: -4, weatherDesc: "cloudy"},
+        { id: 101, name: "Helsinki", temperature: 28, weatherDesc: "rainy"}
     ]);
 
     const addCity = () => {
