@@ -28,9 +28,8 @@ const CityCard: React.FC<CityData> = (props) => {
                     <Icon type={props.weatherDesc} />
                 </div>
                 <div className={classes.Column}>
+                    <p>{props.temperature} &#176;</p>
                     <p>{props.name}</p>
-                    <p>{props.weatherDesc}</p>
-                    <p>{props.temperature}</p>
                 </div>
             </div>
         </Card>

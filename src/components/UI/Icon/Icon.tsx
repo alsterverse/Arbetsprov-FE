@@ -3,8 +3,11 @@ import cloudy from "./../../../assets/icon_cloudy.svg";
 import rainy from "./../../../assets/icon_rain.svg";
 import fallback from "./../../../assets/CloseButton.svg";
 
+import classes from './Icon.module.css';
+
 interface Props {
-    type: string
+    type: string;
+    size?: string;
 }
 
 const Icon: React.FC<Props> = (props) => {
@@ -33,7 +36,7 @@ const Icon: React.FC<Props> = (props) => {
     }
 
     return(
-        <div>
+        <div className={classes.lg}>
             <img src={icon} alt={iconAltText} />
         </div>
     )
