@@ -15,7 +15,7 @@ export const formatCityData = (city: any) => {
 
 export const sortCities = (cities: CityData[]) => {
     let sortedCities = cities.sort((a: any, b: any) => {
-        return a.temperature - b.temperature;
+        return b.temperature - a.temperature;
     })
 
     return sortedCities;

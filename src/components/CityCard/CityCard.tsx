@@ -1,10 +1,10 @@
 import Card from '../UI/Card/Card';
 import Icon from '../UI/Icon/Icon';
-import { CityData } from './../../interfaces';
+import Button from "./../UI/Button/Button";
 
 import classes from './CityCard.module.css';
 
-const CityCard: React.FC<CityData> = (props) => {
+const CityCard = (props: any) => {
     let cardColor: string;
 
     // Decide color on card
@@ -23,6 +23,9 @@ const CityCard: React.FC<CityData> = (props) => {
 
     return(
         <Card color={cardColor}>
+            <div className={classes.topRow}>
+                <Button type="close" click={() => props.remove(props.id)}></Button>
+            </div>
             <div className={classes.Container}>
                 <div className={classes.Column}>
                     <Icon type={props.weatherDesc} />

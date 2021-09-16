@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { CitiesState, CityData } from './../../interfaces';
 
-import { formatCityData } from './../../helpers';
+import { formatCityData, sortCities } from './../../helpers';
 
 const runAPI = () => {
     let query = getCity('Stockholm');
@@ -20,27 +20,43 @@ const runAPI = () => {
 
 const Dashboard = () => {
 
+    let mockData: any = [{ id: 456, name: "Copenhagen", temperature: 10, weatherDesc: "sunny"},
+    { id: 789, name: "Oslo", temperature: -4, weatherDesc: "cloudy"},
+    { id: 101, name: "Helsinki", temperature: 28, weatherDesc: "rainy"}]
+
     const [cities, setCities] = useState<CitiesState["cities"]>([
         { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
-        { id: 456, name: "Copenhagen", temperature: 10, weatherDesc: "sunny"},
-        { id: 789, name: "Oslo", temperature: -4, weatherDesc: "cloudy"},
-        { id: 101, name: "Helsinki", temperature: 28, weatherDesc: "rainy"}
     ]);
 
     const addCity = () => {
-        // Get data via API
-        // Add city to state
+        let newState = [...cities];
+        let itemToBeAdded = mockData.splice(-1)[0];
+        newState.push(itemToBeAdded);
+
+        newState = sortCities(newState);
+
+        setCities(newState);
     }
 
     const removeCity = (id: number) => {
-        // Remove city from state
+        let newState = [...cities];
+
+        let cityIndex = newState.findIndex((el) => {
+            return el.id === id;
+        })
+
+        newState.splice(cityIndex, 1);
+
+        setCities(newState);
+
     }
 
     return(
         <>
-            <div>This is dashboard</div>
-            <CitiesList cities={cities} />
-            <button onClick={() => { runAPI() }}>Test API</button>
+            <h1>Hur är vädret i...</h1>
+            <CitiesList cities={cities} remove={removeCity} />
+            {/* <button onClick={() => { runAPI() }}>Test API</button> */}
+            <button onClick={() => addCity()}>Add city</button>
         </>
     )
 }

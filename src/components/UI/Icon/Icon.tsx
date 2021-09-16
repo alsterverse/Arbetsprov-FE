@@ -13,6 +13,24 @@ interface Props {
 const Icon: React.FC<Props> = (props) => {
     let icon: string;
     let iconAltText: string;
+    let style: string;
+
+    switch(props.size) {
+        case "small":
+            style = classes.sm;
+            break;
+
+        case "medium":
+            style = classes.md;
+            break;
+
+        case "large":
+            style = classes.lg;
+            break;
+
+        default:
+            style = classes.lg;
+    }
     
     switch(props.type) {
         case "sunny":
@@ -28,7 +46,12 @@ const Icon: React.FC<Props> = (props) => {
         case "rainy":
             icon = rainy;
             iconAltText = "rainy icon";
-            break; 
+            break;
+
+        case "close":
+            icon = fallback;
+            iconAltText = "fallback icon";
+            break;
 
         default:
             icon = fallback;
@@ -36,7 +59,7 @@ const Icon: React.FC<Props> = (props) => {
     }
 
     return(
-        <div className={classes.lg}>
+        <div className={style}>
             <img src={icon} alt={iconAltText} />
         </div>
     )
