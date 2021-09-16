@@ -18,6 +18,11 @@ const Button = ({type, children, click}: Props) => {
             style.push(Classes.IconButton)
             break;
 
+        case "add":
+            content = <Icon type="add" size="small" />;
+            style.push(Classes.IconButton);
+            break;
+
         default:
             content = <>{children}</>
     }

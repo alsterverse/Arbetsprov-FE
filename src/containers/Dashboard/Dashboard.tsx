@@ -1,4 +1,5 @@
 import CitiesList from "../../components/CitiesList/CitiesList";
+import Input from "../../components/UI/Input/Input";
 
 import { getCity } from "../../api/weatherStack";
 
@@ -54,6 +55,7 @@ const Dashboard = () => {
     return(
         <>
             <h1>Hur är vädret i...</h1>
+            <Input />
             <CitiesList cities={cities} remove={removeCity} />
             {/* <button onClick={() => { runAPI() }}>Test API</button> */}
             <button onClick={() => addCity()}>Add city</button>

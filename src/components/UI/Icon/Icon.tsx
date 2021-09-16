@@ -2,6 +2,7 @@ import sunny from "./../../../assets/icon_sun.svg";
 import cloudy from "./../../../assets/icon_cloudy.svg";
 import rainy from "./../../../assets/icon_rain.svg";
 import fallback from "./../../../assets/CloseButton.svg";
+import add from "./../../../assets/AddButton.svg";
 
 import classes from './Icon.module.css';
 
@@ -13,23 +14,23 @@ interface Props {
 const Icon: React.FC<Props> = (props) => {
     let icon: string;
     let iconAltText: string;
-    let style: string;
+    let styles: string[] = [];
 
     switch(props.size) {
         case "small":
-            style = classes.sm;
+            styles.push(classes.sm);
             break;
 
         case "medium":
-            style = classes.md;
+            styles.push(classes.md);
             break;
 
         case "large":
-            style = classes.lg;
+            styles.push(classes.lg);
             break;
 
         default:
-            style = classes.lg;
+            styles.push(classes.lg);
     }
     
     switch(props.type) {
@@ -53,13 +54,19 @@ const Icon: React.FC<Props> = (props) => {
             iconAltText = "fallback icon";
             break;
 
+        case "add":
+            icon = add;
+            iconAltText = "add icon";
+            styles.push(classes.black);
+            break;
+
         default:
             icon = fallback;
             iconAltText = "fallback icon";
     }
 
     return(
-        <div className={style}>
+        <div className={styles.join(" ")}>
             <img src={icon} alt={iconAltText} />
         </div>
     )
