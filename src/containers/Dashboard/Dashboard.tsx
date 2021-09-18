@@ -5,7 +5,7 @@ import { getCity } from "../../api/weatherStack";
 
 import { useState } from "react";
 
-import { CitiesState, CityData } from './../../interfaces';
+import { CitiesState, UiState } from './../../interfaces';
 
 import { formatCityData, sortCities } from './../../helpers';
 
@@ -15,12 +15,15 @@ const Dashboard = () => {
     const [cities, setCities] = useState<CitiesState["cities"]>([
         { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
     ]);
+    const [ui, setUi] = useState<UiState>({ error: false, errorMessage: "", searchString: ""});
 
     // Ovan vid att använda fetch. Ytterligare ett experiment.
     // Detta e nog inte best practice rent syntaxmässigt.
     //! Troligtvis även att jag cause:ar side effects här och borde använda
-    //! En useEffect-hook. Fixa in case of time.
-    const searchCity = (searchString: string) => {
+    //! en useEffect-hook. Fixa in case of time.
+    const searchCity = (evt: any, searchString: string) => {
+        evt.preventDefault();
+
         let query = getCity(searchString);
 
         query.then(resp => {
@@ -51,16 +54,29 @@ const Dashboard = () => {
         newState.splice(cityIndex, 1);
 
         setCities(newState);
-
     }
 
+    // Big noob-problems av någon anledning. Fallback till denna klumpiga lösningen
+    // för att synka input-komponent med state.
+    const handleSearchString = (evt: any) => {
+        console.log(evt.target.value);
+        let newState = {...ui};
+        newState.searchString = evt.target.value;
+        setUi(newState);        
+    }
+    
     return(
         <>
             <h1>Hur är vädret i...</h1>
-            <Input />
-            <CitiesList cities={cities} remove={removeCity} />
-            <button onClick={() => { searchCity("Helsinki") }}>Test API</button>
-            {/* <button onClick={() => addCity()}>Add city</button> */}
+            <Input
+                value={ui.searchString}
+                change={handleSearchString}
+                error={ui.error} 
+                errorMessage={ui.errorMessage} 
+                onsubmit={(evt: any) => searchCity(evt, ui.searchString)} />
+            <CitiesList 
+                cities={cities} 
+                remove={removeCity} />
         </>
     )
 }

@@ -8,3 +8,9 @@ export interface CityData {
 export interface CitiesState {
     cities: CityData[] 
 }
+
+export interface UiState {
+    error: boolean,
+    errorMessage: string,
+    searchString: string
+}

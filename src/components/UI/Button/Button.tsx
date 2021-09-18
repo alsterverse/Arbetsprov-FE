@@ -2,6 +2,8 @@
 import Icon from "./../Icon/Icon";
 import Classes from "./Button.module.css";
 
+
+
 type Props = {
     type: string,
     children?: JSX.Element | JSX.Element[],
@@ -9,18 +11,18 @@ type Props = {
 }
 
 const Button = ({type, children, click}: Props) => {
-    let style: string[] = [];
+    let styles: string[] = [];
     let content: JSX.Element;
 
     switch(type) {
         case "close":
             content = <Icon type="close" size="small" />;
-            style.push(Classes.IconButton)
+            styles.push(Classes.IconButton)
             break;
 
         case "add":
             content = <Icon type="add" size="small" />;
-            style.push(Classes.IconButton);
+            styles.push(Classes.IconButton);
             break;
 
         default:
@@ -28,7 +30,8 @@ const Button = ({type, children, click}: Props) => {
     }
 
     return(
-        <button className={style.join(' ')} onClick={click}>
+        // Klumpigt sätt att styra html-button-type här. Skyller på TS!
+        <button type={type === "add" ? "submit" : "button"} className={styles.join(' ')} onClick={click}>
             {content}
         </button>    
     )

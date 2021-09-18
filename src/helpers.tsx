@@ -3,7 +3,7 @@ import { CityData } from "./interfaces";
 export const formatCityData = (city: any) => {
     
     return { 
-            id: Math.floor(Math.random() * 10), 
+            id: Math.floor(Math.random() * 1000), 
             name: city.location.name, 
             temperature: city.current.temperature, 
             weatherDesc: city.current.weather_descriptions[0], 
