@@ -12,9 +12,7 @@ import { formatCityData, sortCities } from './../../helpers';
 
 const Dashboard = () => {
 
-    const [cities, setCities] = useState<CitiesState["cities"]>([
-        { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
-    ]);
+    const [cities, setCities] = useState<CitiesState["cities"]>([]);
     const [ui, setUi] = useState<UiState>({ error: false, errorMessage: "Det finns ingen sån stad :(", searchString: ""});
 
     // Ovan vid att använda fetch. Ytterligare ett experiment.
@@ -28,7 +26,6 @@ const Dashboard = () => {
 
         query.then(resp => {
             if(resp.error) {
-                console.log("nope");
                 setUi({...ui, error: true, searchString: ""});
             } else {
                 let newCity: any = formatCityData(resp);

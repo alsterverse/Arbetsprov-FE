@@ -3,6 +3,7 @@ import cloudy from "./../../../assets/icon_cloudy.svg";
 import rainy from "./../../../assets/icon_rain.svg";
 import fallback from "./../../../assets/CloseButton.svg";
 import add from "./../../../assets/AddButton.svg";
+import partlyCloudy from "./../../../assets/icon_partly_cloudy.svg";
 
 import classes from './Icon.module.css';
 
@@ -34,12 +35,12 @@ const Icon: React.FC<Props> = (props) => {
     }
     
     switch(props.type) {
-        case "sunny":
+        case "Sunny":
             icon = sunny;
             iconAltText = "sunny icon";
             break; 
 
-        case "cloudy":
+        case "Cloudy":
             icon = cloudy;
             iconAltText = "cloudy icon";
             break; 
@@ -47,6 +48,11 @@ const Icon: React.FC<Props> = (props) => {
         case "rainy":
             icon = rainy;
             iconAltText = "rainy icon";
+            break;
+
+        case "Partly cloudy":
+            icon = partlyCloudy;
+            iconAltText = "partly cloudy icon";
             break;
 
         case "close":
