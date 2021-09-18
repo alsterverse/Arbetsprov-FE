@@ -15,7 +15,7 @@ const Dashboard = () => {
     const [cities, setCities] = useState<CitiesState["cities"]>([
         { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
     ]);
-    const [ui, setUi] = useState<UiState>({ error: false, errorMessage: "", searchString: ""});
+    const [ui, setUi] = useState<UiState>({ error: false, errorMessage: "Det finns ingen sån stad :(", searchString: ""});
 
     // Ovan vid att använda fetch. Ytterligare ett experiment.
     // Detta e nog inte best practice rent syntaxmässigt.
@@ -28,7 +28,8 @@ const Dashboard = () => {
 
         query.then(resp => {
             if(resp.error) {
-                console.log("this is error");
+                console.log("nope");
+                setUi({...ui, error: true, searchString: ""});
             } else {
                 let newCity: any = formatCityData(resp);
                 addCity(newCity);
@@ -58,9 +59,12 @@ const Dashboard = () => {
 
     // Big noob-problems av någon anledning. Fallback till denna klumpiga lösningen
     // för att synka input-komponent med state.
+    // Det finns en snygg inline-oneliner här någonstans.
     const handleSearchString = (evt: any) => {
-        console.log(evt.target.value);
         let newState = {...ui};
+
+        newState.error = false; 
+
         newState.searchString = evt.target.value;
         setUi(newState);        
     }

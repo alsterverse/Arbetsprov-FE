@@ -25,13 +25,11 @@ const Input: React.FC<Props> = ({value, change, error, errorMessage, onsubmit}) 
                     <Button type="add" click={onsubmit} />
                 </form>
             </div>
-            <div>
-                {error ?? 
+
+            {error && 
                 <div className={Classes.ErrorContainer}>
-                    {errorMessage}
-                </div> 
-            }
-            </div>
+                    <span>{errorMessage}</span>
+                </div>}
         </>
     )
 }

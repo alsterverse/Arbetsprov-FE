@@ -16,3 +16,11 @@
 .Input {
     border-color: transparent;
 }
+
+
+/* Design, baby! */
+.ErrorContainer {
+    background-color: red;
+    color: white;
+    padding: 8px;
+}
