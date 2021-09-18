@@ -9,33 +9,35 @@ import { CitiesState, CityData } from './../../interfaces';
 
 import { formatCityData, sortCities } from './../../helpers';
 
-const runAPI = () => {
-    let query = getCity('Stockholm');
-    query.then((resp: any) => {
-        let hello: CityData = formatCityData(resp);
-        console.log(hello);
-    }).catch((err: any) => {
-        console.log(err);
-    })
-}
 
 const Dashboard = () => {
-
-    let mockData: any = [{ id: 456, name: "Copenhagen", temperature: 10, weatherDesc: "sunny"},
-    { id: 789, name: "Oslo", temperature: -4, weatherDesc: "cloudy"},
-    { id: 101, name: "Helsinki", temperature: 28, weatherDesc: "rainy"}]
 
     const [cities, setCities] = useState<CitiesState["cities"]>([
         { id: 123, name: "Stockholm", temperature: 22, weatherDesc: "sunny"},
     ]);
 
-    const addCity = () => {
+    // Ovan vid att använda fetch. Ytterligare ett experiment.
+    // Detta e nog inte best practice rent syntaxmässigt.
+    //! Troligtvis även att jag cause:ar side effects här och borde använda
+    //! En useEffect-hook. Fixa in case of time.
+    const searchCity = (searchString: string) => {
+        let query = getCity(searchString);
+
+        query.then(resp => {
+            if(resp.error) {
+                console.log("this is error");
+            } else {
+                let newCity: any = formatCityData(resp);
+                addCity(newCity);
+            }
+        })
+    }
+
+    const addCity = (newCity: any) => {
         let newState = [...cities];
-        let itemToBeAdded = mockData.splice(-1)[0];
-        newState.push(itemToBeAdded);
-
+        newState.push(newCity);
         newState = sortCities(newState);
-
+        
         setCities(newState);
     }
 
@@ -57,8 +59,8 @@ const Dashboard = () => {
             <h1>Hur är vädret i...</h1>
             <Input />
             <CitiesList cities={cities} remove={removeCity} />
-            {/* <button onClick={() => { runAPI() }}>Test API</button> */}
-            <button onClick={() => addCity()}>Add city</button>
+            <button onClick={() => { searchCity("Helsinki") }}>Test API</button>
+            {/* <button onClick={() => addCity()}>Add city</button> */}
         </>
     )
 }

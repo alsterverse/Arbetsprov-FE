@@ -1,7 +1,5 @@
 import { CityData } from "./interfaces";
 
-// Den här är för jobbig att type:a! :D sry!
-// Finns det något smart sätt?
 export const formatCityData = (city: any) => {
     
     return { 
