@@ -1,26 +1,53 @@
-.Container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .Container {
+        max-width: 600px;
+        width: 100%;
+        padding: 20px 30px;
+        border-radius: 5px;
+        background-color: white;
+    }
 
-    padding: 20px 30px;
-    border-radius: 5px;
-    background-color: white;    
-}
+    .Form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 
-.Label {
-    font-weight: bold;
-    padding-right: 1em;
-}
+    .FormLeft {
+        flex: 1;
+        display: flex;
+        align-items: baseline;
+    }
 
-.Input {
-    border-color: transparent;
-}
+    .Label {
+        font-weight: bold;
+        padding-right: 1em;
+    }
+
+    .Input {
+        border-color: transparent;
+        flex: 1;
+        font-size: 1em;
+    }
 
 
-/* Design, baby! */
-.ErrorContainer {
-    background-color: red;
-    color: white;
-    padding: 8px;
-}
+    /* Design, baby! */
+    .ErrorContainer {
+        background-color: red;
+        color: white;
+        padding: 8px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .Container {
+            width: auto;
+        }
+
+        .AddButton {
+            display: none;
+        }
+
+        .Input {
+            min-width: 0;
+            width: auto;
+        }
+    }

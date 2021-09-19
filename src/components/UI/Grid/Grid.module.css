@@ -1,6 +1,6 @@
 .Container {
-    width: 960px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -8,15 +8,18 @@
 .Container > div {
     width: 33%;
     box-sizing: border-box;
-    padding: 8px;
+    padding: 0 15px;
+    margin-top: 30px;
 }
 
 @media only screen and (max-width: 768px) {
     .Container {
         flex-direction: column;
+        align-items: center;
     }
 
     .Container > div {
         width: 100%;
+        margin-top: 15px;
     }
 }

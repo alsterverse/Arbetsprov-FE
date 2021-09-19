@@ -1,0 +1,10 @@
+.Heading {
+    font-size: 32px;
+    font-weight: 900;
+}
+
+@media only screen and (max-width: 768px) {
+    .Dashboard {
+        padding: 15px;
+    }
+}

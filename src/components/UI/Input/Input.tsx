@@ -15,14 +15,18 @@ const Input: React.FC<Props> = ({value, change, error, errorMessage, onsubmit}) 
     return (
         <>
             <div className={Classes.Container}>
-                <form onSubmit={onsubmit}>
-                    <span className={Classes.Label}>Plats:</span>
-                    <input
-                        value={value} 
-                        className={Classes.Input} 
-                        placeholder="skriv en stad här..."
-                        onChange={((evt: any) => change(evt))} />
-                    <Button type="add" click={onsubmit} />
+                <form className={Classes.Form} onSubmit={onsubmit}>
+                    <div className={Classes.FormLeft}>
+                        <span className={Classes.Label}>Plats:</span>
+                        <input
+                            value={value} 
+                            className={Classes.Input} 
+                            placeholder="skriv en stad här..."
+                            onChange={((evt: any) => change(evt))} />
+                    </div>
+                    <div className={Classes.AddButton}>
+                        <Button type="add" click={onsubmit} />
+                    </div>
                 </form>
             </div>
 

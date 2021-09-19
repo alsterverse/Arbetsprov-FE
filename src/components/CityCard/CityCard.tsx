@@ -23,16 +23,18 @@ const CityCard = (props: any) => {
 
     return(
         <Card color={cardColor}>
-            <div className={classes.topRow}>
-                <Button type="close" click={() => props.remove(props.id)}></Button>
-            </div>
             <div className={classes.Container}>
-                <div className={classes.Column}>
+                <div className={[classes.Column, classes.ColumnLeft].join(" ")}>
                     <Icon type={props.weatherDesc} />
                 </div>
-                <div className={classes.Column}>
-                    <p>{props.temperature} &#176;</p>
-                    <p>{props.name}</p>
+                <div className={[classes.Column, classes.ColumnRight].join(" ")}>
+                    <div className={classes.CloseBtn}>
+                        <Button type="close" click={() => props.remove(props.id)}></Button>
+                    </div>
+                    <div className={classes.Info}>
+                        <span className={classes.Temperature}>{props.temperature} &#176;</span>
+                        <p className={classes.Location}>{props.name}</p>
+                    </div>
                 </div>
             </div>
         </Card>

@@ -9,6 +9,8 @@ import { CitiesState, UiState } from './../../interfaces';
 
 import { formatCityData, sortCities } from './../../helpers';
 
+import Classes from "./Dashboard.module.css";
+
 
 const Dashboard = () => {
 
@@ -68,7 +70,7 @@ const Dashboard = () => {
     
     return(
         <>
-            <h1>Hur är vädret i...</h1>
+            <h1 className={Classes.Heading}>Hur är vädret i...</h1>
             <Input
                 value={ui.searchString}
                 change={handleSearchString}

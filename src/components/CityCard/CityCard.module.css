@@ -1,5 +1,7 @@
 .Container {
     display: flex;
+    max-width: 400px;
+    width: 100%;
 }
 
 .Column {
@@ -7,12 +9,63 @@
 
     display: flex;
     flex-direction: column;
+}
+
+.ColumnLeft {
     justify-content: center;
     align-items: center;
 }
 
-.topRow {
+.CloseBtn {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+}
+
+.Location {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.Temperature {
+    font-size: 3em;
+}
+
+@media only screen and (max-width: 768px) {
+    .Container {
+        max-width: none;
+    }
+
+    .Column {
+        flex: initial;
+    }
+
+    .ColumnLeft {
+        padding: 0 15px;
+    }
+
+    .ColumnRight {
+        flex: 1;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .CloseBtn {
+        align-items: flex-start;
+    }
+
+    .Info {
+        flex: 1;
+        padding-left: 8px;
+        flex-direction: column;
+    }
+
+    .ColumnRight > div {
+        display: flex;
+    }
+
+    .ColumnRight > div > p {
+        margin: 0;
+        padding: 0;
+    }
 }

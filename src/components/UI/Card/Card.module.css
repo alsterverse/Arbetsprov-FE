@@ -1,19 +1,18 @@
 .Card {
     padding: 8px;
-    border: 1px solid black;
 }
 
 .Yellow {
     color: white;
-    background-color: rgb(218, 196, 32);
+    background-color: #FAC710;
 }
 
 .Blue {
     color: white;
-    background-color: rgba(25, 48, 181, 0.824)
+    background-color: #2D9BF0;
 }
 
 .Red {
     color: white;
-    background-color: rgb(180, 16, 16);
+    background-color: #F24726;
 }
