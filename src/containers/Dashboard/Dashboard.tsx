@@ -19,8 +19,8 @@ const Dashboard = () => {
 
     // Ovan vid att använda fetch. Ytterligare ett experiment.
     // Detta e nog inte best practice rent syntaxmässigt.
-    //! Troligtvis även att jag cause:ar side effects här och borde använda
-    //! en useEffect-hook. Fixa in case of time.
+    //! Troligtvis även att jag cause:ar side effects här? Borde använda
+    //! en useEffect-hook? Fixa in case of time.
     const searchCity = (evt: any, searchString: string) => {
         evt.preventDefault();
 
@@ -28,10 +28,16 @@ const Dashboard = () => {
 
         query.then(resp => {
             if(resp.error) {
-                setUi({...ui, error: true, searchString: ""});
+                if(resp.error.code === 615) {
+                    setUi({...ui, error: true, searchString: ""});
+
+                } else {
+                    console.log("Du har något annat fel! :O", resp.error);
+                }
             } else {
                 let newCity: any = formatCityData(resp);
                 addCity(newCity);
+                setUi({...ui, searchString: ""});
             }
         })
     }
