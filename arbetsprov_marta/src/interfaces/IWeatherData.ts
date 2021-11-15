@@ -1,4 +1,4 @@
-interface ICityData {
+interface IWeatherData {
     current: {
         cloudcover: number,
         feelslike: number,
@@ -31,4 +31,4 @@ interface ICityData {
 
 }
 
-export default ICityData;
+export default IWeatherData;

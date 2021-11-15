@@ -1,4 +1,4 @@
-@import 'mixins';
+@import "mixins";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 body {
@@ -72,6 +72,7 @@ body {
           padding: 20px 20px;
           width: 80%;
         }
+       
         .icon {
           width: 25%;
         }
@@ -104,10 +105,8 @@ body {
         }
       }
     }
-    .logo{
-      margin: 10px 0px;
-
+    .logo {
+      margin: 30px 0px;
     }
-    
   }
 }

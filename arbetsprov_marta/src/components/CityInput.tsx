@@ -1,21 +1,14 @@
 import axios from "axios";
 import React, { useState } from "react";
 import Union from "./../icons/Union.svg";
-import ICityData from "../interfaces/ICityData";
+import IWeatherData from "../interfaces/IWeatherData";
 import WeatherCards from "./WeatherCards";
 
-
 function CityInput() {
-  const [cityDataList, setCityDataList] = useState<ICityData[]>([]);
+  const [weatherDataList, setWeatherDataList] = useState<IWeatherData[]>([]);
   const [city, setCity] = useState("");
-  const [showWeather, setShowWeather] = useState(false);
-  const [error, setError] = useState(false);
 
-  function deleteWeatherCard (deletedWeatherData: ICityData) {
-    setCityDataList (cityDataList.filter(function(city) {
-      return city !== deletedWeatherData
-    }))
-  }
+  const [error, setError] = useState(false);
 
   function searchWeather() {
     axios
@@ -27,12 +20,20 @@ function CityInput() {
           setError(true);
         } else {
           setError(false);
-          setCityDataList([...cityDataList, response.data]);
-          setShowWeather(true);
+          setWeatherDataList([...weatherDataList, response.data]);
+
         }
       });
   }
- 
+
+  function deleteWeatherCard(deletedWeatherData: IWeatherData) {
+    setWeatherDataList(
+      weatherDataList.filter(function (city) {
+        return city !== deletedWeatherData;
+      })
+    );
+  }
+
   return (
     <>
       <div className="input-wrapper">
@@ -43,8 +44,7 @@ function CityInput() {
             name="city"
             onChange={(event) => {
               setCity(event.target.value);
-            }}
-          ></input>
+            }}></input>
           <button onClick={searchWeather}>
             <img src={Union} alt="" />
           </button>
@@ -57,14 +57,16 @@ function CityInput() {
       </div>
 
       <div className="weather-card-container">
-        {!showWeather ? (
-          <p> </p>
-        ) : (
-          cityDataList.map((city) => {
-            console.log(cityDataList)
-            return <WeatherCards weatherData={city} handleDeleteWeatherCard={deleteWeatherCard}/>;
+        {
+          weatherDataList.map((city) => {
+            return (
+              <WeatherCards
+                weatherData={city}
+                handleDeleteWeatherCard={deleteWeatherCard}
+              />
+            );
           })
-        )}
+        }
       </div>
     </>
   );
