@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import WeatherList from './components/weatherList/WeatherList'
 import AddWeatherForm from './components/addWeatherForm/AddWeatherForm'
+import './app.scss'
 
 function App() {
   const [todos, setTodos] = useState(() => {
@@ -47,25 +47,26 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Header />
-      <AddWeatherForm
-        weather={weather}
-        onAddInputChange={handleAddInputChange}
-        onAddFormSubmit={handleAddFormSubmit}
-      />
+    <>
+      <div className="weather-container">
+        <AddWeatherForm
+          weather={weather}
+          onAddInputChange={handleAddInputChange}
+          onAddFormSubmit={handleAddFormSubmit}
+        />
 
-      <ul className="weather-list">
-        {todos.map((weather) => (
-          <WeatherList
-            key={weather.id}
-            weather={weather}
-            onDeleteClick={handleDeleteClick}
-          />
-        ))}
-      </ul>
+        <ul className="weather-list">
+          {todos.map((weather) => (
+            <WeatherList
+              key={weather.id}
+              weather={weather}
+              onDeleteClick={handleDeleteClick}
+            />
+          ))}
+        </ul>
+      </div>
       <Footer />
-    </div>
+    </>
   )
 }
 
