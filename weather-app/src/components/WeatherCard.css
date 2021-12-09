@@ -59,7 +59,7 @@
 }
 
 
-@media only screen and (max-width: 810px) {
+@media only screen and (max-width: 800px) {
 	.weather-card {
 		width:335px;
 		height: 120px;

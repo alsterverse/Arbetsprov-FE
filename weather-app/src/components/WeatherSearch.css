@@ -47,21 +47,22 @@
 .grid-cards {
 	margin-left: auto;
 	margin-right: auto;
-	width: 1220px;
+	width: 1185px;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-row-gap: 20px;
+	grid-column-gap: 30px;
 }
 
-@media only screen and (max-width: 1220px) {
+@media only screen and (max-width: 1200px) {
 	.grid-cards {
-		width: 810px;
+		width: 780px;
 		grid-template-columns: 1fr 1fr;
 		grid-row-gap: 10px;
 	}
   }
 
-  @media only screen and (max-width: 810px) {
+  @media only screen and (max-width: 800px) {
 
 	.weather-search {
 		min-height: 60vh;
