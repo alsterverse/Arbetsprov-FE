@@ -4,17 +4,6 @@
 	width: 375px;
 	height: 181px;
 }
-
-.weather-info {
-	width: 80%;
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-around;
-	margin-left: auto;
-	margin-right: auto;
-}
-
 .yellow {
 	background-color: #FAC710;
 }
@@ -27,11 +16,22 @@
 	background-color: #F24726;
 }
 
-.weather-img {
+.weather-card .weather-info {
+	width: 80%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.weather-card .weather-img {
 	height: 80px;
 }
 
-.weather-text {
+.weather-card .weather-text {
 	text-align: center;
 }
 
@@ -57,3 +57,37 @@
 	top: -172px;
 	left: 335px;
 }
+
+
+@media only screen and (max-width: 810px) {
+	.weather-card {
+		width:335px;
+		height: 120px;
+	}
+
+	.weather-card .weather-info {
+		justify-content: flex-start;
+	}
+
+	.weather-card .weather-img {
+		height: 60px;
+		margin-right: 30px;
+	}
+
+	.weather-card .weather-text {
+		text-align: start;
+	}
+
+	.weather-card .degrees {
+		font-size: 2.91em;
+	}
+
+	.weather-card .city {
+		font-size: 0.925625em
+	}
+
+	.weather-card img.remove-btn {
+		top: -110px;
+		left: 295px;
+	}
+  }

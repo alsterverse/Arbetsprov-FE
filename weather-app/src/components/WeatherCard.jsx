@@ -15,7 +15,7 @@ const WeatherCard = ({ weatherObj, index, removeWeather }) => {
 	const weatherType = weatherObj.current.weather_descriptions[0]
 
 	let color = 'yellow'
-	if (weatherObj.current.temperature <= 0 || weatherType === "rain") {
+	if (weatherObj.current.temperature <= 0 || weatherType === "Rain" || weatherType === "Light Rain Shower") {
 		color = 'blue'
 	} else if (weatherObj.current.temperature >= 20) {
 		color = 'red'
@@ -40,6 +40,7 @@ const WeatherCard = ({ weatherObj, index, removeWeather }) => {
 			weatherImg = snow
 			break
 
+		case "Light Snow Grains, Light Snow":
 		case "Light Snow":
 			weatherImg = lightsnow
 			break
