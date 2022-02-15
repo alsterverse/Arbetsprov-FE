@@ -5,14 +5,8 @@ import { APIkey } from '../utils/urls';
 import SearchLocation from './SearchLocation';
 
 const CurrentWeather = () => {
-  //   const [location, setLocation] = useState([]);
+  const [locations, setLocations] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-
-  //   useEffect(() => {
-
-  //   });
-
-  //
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -25,9 +19,17 @@ const CurrentWeather = () => {
       options
     )
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setLocations([data, ...locations]));
 
-    console.log(searchValue);
+    //   if (locations.length === 0) {
+    //     setLocations(data.location);
+    //   } else {
+    //   }
+    // });
+
+    console.log(locations.length);
+    console.log(locations);
+    setSearchValue('');
   };
 
   return (
@@ -38,6 +40,12 @@ const CurrentWeather = () => {
         setSearchValue={setSearchValue}
       />
       <div> Here goes the weather cards</div>
+      {locations.map((location) => (
+        <div key={location.location.name}>
+          <p>{location.location.name}</p>
+          <p>{location.current.temperature}</p>
+        </div>
+      ))}
     </div>
   );
 };
