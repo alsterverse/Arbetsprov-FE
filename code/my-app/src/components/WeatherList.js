@@ -1,29 +1,86 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { APIkey } from '../utils/constants';
+import deleteIcon from '../assets/deleteIcon.png';
 import SearchLocation from './SearchLocation';
 import styled from 'styled-components';
 
+const StyledWeatherContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100vw;
+`;
+
+const WeatherCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 992px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 850px;
+  }
+`;
+
 const StyledWeatherCard = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 5px;
+  width: 90vw;
+  max-width: 450px;
+  &.mid-temperature {
+    background-color: #fac710;
+  }
+  &.high-temperature {
+    background-color: #f24726;
+  }
+  &.low-temperature {
+    background-color: #2d9bf0;
+  }
+  &.default {
+    background-color: #fff;
+  }
+  @media (min-width: 992px) {
+    width: 30%;
+  }
+  /* background-color: ${(props) => props.BackgroundSwitcher || 'white'}; */
+`;
+
+const DeleteButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid black;
-  &.mid-temperature {
-    background-color: yellow;
+  border: 0;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: #eee;
+  img {
+    height: 17px;
+    width: 17px;
   }
-  &.high-temperature {
-    background-color: red;
-  }
-  &.low-temperature {
-    background-color: blue;
-  }
-  /* background-color: ${(props) => props.BackgroundSwitcher || 'white'}; */
 `;
 
 const CurrentWeather = () => {
   const [locations, setLocations] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    // if (searchValue) {
+    // onFormSubmit();
+    return () => {
+      setLocations([]);
+      setError('');
+    };
+  }, []);
 
   const onFormSubmit = (event) => {
     event.preventDefault();
@@ -37,10 +94,11 @@ const CurrentWeather = () => {
     )
       .then((res) => res.json())
       .then((data) => setLocations([data, ...locations]))
-      .catch((error) => alert('no city found'));
+      .catch((error) => setError(error));
 
     console.log(locations.length);
     console.log(locations);
+    console.log(error);
     setSearchValue('');
   };
 
@@ -82,39 +140,48 @@ const CurrentWeather = () => {
   };
 
   return (
-    <div>
+    <StyledWeatherContainer>
       <SearchLocation
         onFormSubmit={onFormSubmit}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
-      <div> Here goes the weather cards</div>
-      {locations.map((location) => (
-        <StyledWeatherCard key={location.id} className={BackgroundSwitcher()}>
-          <p>{location.name}</p>
-          <p>{location.main.temp}°</p>
-          <p>{location.weather.description}</p>
-          {/* <img
-            src={location.current.weather_icons}
-            style={{ width: 50, height: 50 }}
-            alt='icon'
-          /> */}
-          <button
-            onClick={(event) => {
-              const updatedLocations = locations.filter(
-                (item) => item.name !== location.name
-              );
-              setLocations([...updatedLocations]);
-            }}
-          >
-            x
-          </button>
-        </StyledWeatherCard>
-      ))}
+      <WeatherCardContainer>
+        {error ? (
+          <p>No city found</p>
+        ) : (
+          locations.map((location) => (
+            <StyledWeatherCard
+              key={location.id}
+              className={BackgroundSwitcher()}
+            >
+              <div>
+                <p>{location.main.temp}°</p>
+                <p>{location.name}</p>
+              </div>
+              {/* <img
+      src={location.current.weather_icons}
+      style={{ width: 50, height: 50 }}
+      alt='icon'
+    /> */}
+              <DeleteButton
+                onClick={(event) => {
+                  const updatedLocations = locations.filter(
+                    (item) => item.name !== location.name
+                  );
+                  setLocations([...updatedLocations]);
+                }}
+              >
+                <img src={deleteIcon} alt='delete-icon' />
+              </DeleteButton>
+            </StyledWeatherCard>
+          ))
+        )}
+      </WeatherCardContainer>
       {locations.length > 1 && (
         <button onClick={onDeleteAll}>Remove all locations</button>
       )}
-    </div>
+    </StyledWeatherContainer>
   );
 };
 

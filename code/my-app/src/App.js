@@ -1,12 +1,13 @@
 import React from 'react';
+import Header from './components/Header';
+import styled from 'styled-components';
 
 import WeatherList from './components/WeatherList';
 
 export const App = () => {
   return (
     <section>
-      <h1>Weather app</h1>
-      <h2>Hur är vädret i...</h2>
+      <Header />
       <WeatherList />
     </section>
   );
