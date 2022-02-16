@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-// import { WEATHER_URL } from '../utils/urls';
-import { APIkey } from '../utils/urls';
+import { APIkey } from '../utils/constants';
 import SearchLocation from './SearchLocation';
 import styled from 'styled-components';
 
@@ -10,6 +9,16 @@ const StyledWeatherCard = styled.div`
   justify-content: center;
   align-items: center;
   border: 2px solid black;
+  &.mid-temperature {
+    background-color: yellow;
+  }
+  &.high-temperature {
+    background-color: red;
+  }
+  &.low-temperature {
+    background-color: blue;
+  }
+  /* background-color: ${(props) => props.BackgroundSwitcher || 'white'}; */
 `;
 
 const CurrentWeather = () => {
@@ -23,21 +32,36 @@ const CurrentWeather = () => {
       method: 'GET',
     };
     fetch(
-      `http://api.weatherstack.com/current?access_key=${APIkey}&query=${searchValue}`,
+      `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&APPID=${APIkey}`,
       options
     )
       .then((res) => res.json())
-      .then((data) => setLocations([data, ...locations]));
-
-    //   if (locations.length === 0) {
-    //     setLocations(data.location);
-    //   } else {
-    //   }
-    // });
+      .then((data) => setLocations([data, ...locations]))
+      .catch((error) => alert('no city found'));
 
     console.log(locations.length);
     console.log(locations);
     setSearchValue('');
+  };
+
+  // const tempStyling =
+  //   (locationTemperature > 1 &&
+  //     locationTemperature < 19 === 'mid-temperature') ||
+  //   locationTemperature > 19 === 'high-temperature' ||
+  //   locationTemperature < 1 === 'low-temperature';
+
+  const BackgroundSwitcher = () => {
+    let locationTemperature = locations.map((location) => location.main.temp);
+
+    if (locationTemperature > 1 && locationTemperature < 19) {
+      return 'mid-temperature';
+    } else if (locationTemperature > 19) {
+      return 'high-temperature';
+    } else if (locationTemperature < 1) {
+      return 'low-temperature';
+    } else {
+      return 'default';
+    }
   };
 
   // const BackgroundSwitcher = (temperature) => {
@@ -66,19 +90,19 @@ const CurrentWeather = () => {
       />
       <div> Here goes the weather cards</div>
       {locations.map((location) => (
-        <StyledWeatherCard key={location.location.name}>
-          <p>{location.location.name}</p>
-          <p>{location.current.temperature}°</p>
-          <p>{location.current.weather_descriptions}</p>
-          <img
+        <StyledWeatherCard key={location.id} className={BackgroundSwitcher()}>
+          <p>{location.name}</p>
+          <p>{location.main.temp}°</p>
+          <p>{location.weather.description}</p>
+          {/* <img
             src={location.current.weather_icons}
             style={{ width: 50, height: 50 }}
             alt='icon'
-          />
+          /> */}
           <button
             onClick={(event) => {
               const updatedLocations = locations.filter(
-                (item) => item.location.name !== location.location.name
+                (item) => item.name !== location.name
               );
               setLocations([...updatedLocations]);
             }}
