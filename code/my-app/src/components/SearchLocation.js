@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import plusIcon from '../assets/plusIcon.png';
+import plusIcon from '../assets/plus.svg';
 
 const StyledForm = styled.form`
   display: flex;
@@ -58,7 +58,7 @@ const SearchLocation = ({ onFormSubmit, searchValue, setSearchValue }) => {
         onChange={(event) => setSearchValue(event.target.value)}
       />
       <SearchButton type='submit'>
-        <img src={plusIcon} alt='plus-icon' />
+        <img src={plusIcon} alt='plus-icon' style={{ color: 'black' }} />
       </SearchButton>
     </StyledForm>
   );

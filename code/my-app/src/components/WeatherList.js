@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 import { APIkey } from '../utils/constants';
-import deleteIcon from '../assets/deleteIcon.png';
+import deleteIcon from '../assets/delete.svg';
 import SearchLocation from './SearchLocation';
+import snowIcon from '../assets/snow.svg';
 import styled from 'styled-components';
 
 const StyledWeatherContainer = styled.div`
@@ -35,6 +36,7 @@ const StyledWeatherCard = styled.div`
   border-radius: 5px;
   width: 90vw;
   max-width: 450px;
+  height: 110px;
   &.mid-temperature {
     background-color: #fac710;
   }
@@ -62,10 +64,6 @@ const DeleteButton = styled.div`
   width: 35px;
   height: 35px;
   background-color: #eee;
-  img {
-    height: 17px;
-    width: 17px;
-  }
 `;
 
 const CurrentWeather = () => {
@@ -156,14 +154,17 @@ const CurrentWeather = () => {
               className={BackgroundSwitcher()}
             >
               <div>
+                <img
+                  src={snowIcon}
+                  style={{ width: 50, height: 50 }}
+                  alt='snow-icon'
+                />
+              </div>
+              <div>
                 <p>{location.main.temp}°</p>
                 <p>{location.name}</p>
               </div>
-              {/* <img
-      src={location.current.weather_icons}
-      style={{ width: 50, height: 50 }}
-      alt='icon'
-    /> */}
+
               <DeleteButton
                 onClick={(event) => {
                   const updatedLocations = locations.filter(
@@ -172,7 +173,11 @@ const CurrentWeather = () => {
                   setLocations([...updatedLocations]);
                 }}
               >
-                <img src={deleteIcon} alt='delete-icon' />
+                <img
+                  src={deleteIcon}
+                  alt='delete-icon'
+                  style={{ height: '14px', width: '14px' }}
+                />
               </DeleteButton>
             </StyledWeatherCard>
           ))
