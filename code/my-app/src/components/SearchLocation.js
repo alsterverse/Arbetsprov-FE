@@ -2,6 +2,28 @@ import React from 'react';
 import styled from 'styled-components';
 import plusIcon from '../assets/plus.svg';
 
+const SearchLocation = ({ onFormSubmit, searchValue, setSearchValue }) => {
+  return (
+    <StyledForm onSubmit={onFormSubmit}>
+      <div>
+        <label htmlFor='searchbar'>Plats:</label>
+      </div>
+      <SearchBar
+        id='searchbar'
+        type='text'
+        placeholder='Stockholm'
+        required
+        value={searchValue}
+        onChange={(event) => setSearchValue(event.target.value)}
+      />
+      <SearchButton type='submit'>
+        <img src={plusIcon} alt='plus-icon' style={{ color: 'black' }} />
+      </SearchButton>
+    </StyledForm>
+  );
+};
+
+//Styling
 const StyledForm = styled.form`
   display: flex;
   flex-direction: row;
@@ -9,12 +31,15 @@ const StyledForm = styled.form`
   border-radius: 6px;
   width: 90vw;
   max-width: 450px;
+  margin-bottom: 20px;
   div {
     padding-left: 15px;
-    p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    label {
       font-size: 20px;
       font-weight: 500;
-      margin-top: 18px;
     }
   }
 `;
@@ -45,23 +70,5 @@ const SearchButton = styled.button`
     padding: 0;
   }
 `;
-
-const SearchLocation = ({ onFormSubmit, searchValue, setSearchValue }) => {
-  return (
-    <StyledForm onSubmit={onFormSubmit}>
-      <div>
-        <p>Plats:</p>
-      </div>
-      <SearchBar
-        placeholder='Stockholm'
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
-      />
-      <SearchButton type='submit'>
-        <img src={plusIcon} alt='plus-icon' style={{ color: 'black' }} />
-      </SearchButton>
-    </StyledForm>
-  );
-};
 
 export default SearchLocation;
