@@ -1,29 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import plusIcon from '../assets/plus.svg';
+import { SearchButton } from './StyledButtons';
 
-const SearchLocation = ({ onFormSubmit, searchValue, setSearchValue }) => {
-  return (
-    <StyledForm onSubmit={onFormSubmit}>
-      <div>
-        <label htmlFor='searchbar'>Plats:</label>
-      </div>
-      <SearchBar
-        id='searchbar'
-        type='text'
-        placeholder='Stockholm'
-        required
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
-      />
-      <SearchButton type='submit'>
-        <img src={plusIcon} alt='plus-icon' style={{ color: 'black' }} />
-      </SearchButton>
-    </StyledForm>
-  );
-};
-
-//Styling
 const StyledForm = styled.form`
   display: flex;
   flex-direction: row;
@@ -58,17 +37,26 @@ const SearchBar = styled.input`
   -webkit-appearance: none;
 `;
 
-const SearchButton = styled.button`
-  background-color: #fff;
-  border: none;
-  padding-right: 20px;
-  border-radius: 6px;
-  cursor: pointer;
-  img {
-    width: 20px;
-    height: 20px;
-    padding: 0;
-  }
-`;
+const SearchLocation = ({ onFormSubmit, searchValue, setSearchValue }) => {
+  return (
+    <StyledForm onSubmit={onFormSubmit}>
+      <div>
+        <label htmlFor='searchbar'>Plats:</label>
+      </div>
+      <SearchBar
+        id='searchbar'
+        type='text'
+        placeholder='Stockholm'
+        required
+        value={searchValue}
+        autoComplete='off'
+        onChange={(event) => setSearchValue(event.target.value)}
+      />
+      <SearchButton type='submit'>
+        <img src={plusIcon} alt='plus-icon' />
+      </SearchButton>
+    </StyledForm>
+  );
+};
 
 export default SearchLocation;

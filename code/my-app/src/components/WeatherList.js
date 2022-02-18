@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import SearchLocation from './SearchLocation';
@@ -8,6 +8,25 @@ import snowIcon from '../assets/snow.svg';
 import cloudyIcon from '../assets/cloudy.svg';
 import sunIcon from '../assets/sun.svg';
 import rainIcon from '../assets/rain.svg';
+import {
+  DeleteAllButton,
+  DeleteButton,
+  ButtonContainer,
+} from './StyledButtons';
+import {
+  WeatherCardContainer,
+  StyledWeatherCard,
+  IconContainer,
+  WeatherInfoContainer,
+} from './StyledWeatherCard';
+
+const StyledWeatherWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+`;
 
 const CurrentWeather = () => {
   const [locations, setLocations] = useState([]);
@@ -81,26 +100,20 @@ const CurrentWeather = () => {
     }
   };
 
-  // const onDeleteLocation = (locations) => {
-  //   const updatedLocations = locations.filter(
-  //     (item) => item.id !== location.id
-  //   );
-  //   setLocations([...updatedLocations]);
-  // };
-
   const onDeleteAll = () => {
     setLocations([]);
+    setError('');
   };
 
   return (
-    <StyledWeatherContainer>
+    <StyledWeatherWrapper>
       <SearchLocation
         onFormSubmit={onFormSubmit}
         searchValue={searchValue}
         setSearchValue={setSearchValue}
       />
+      {error && <p>Det finns ingen stad som matchar din sökning :(</p>}
       <WeatherCardContainer>
-        {error && <p>No city found</p>}
         {locations.map((location) => (
           <StyledWeatherCard
             key={location.id}
@@ -109,65 +122,30 @@ const CurrentWeather = () => {
               location.weather[0].main
             )}
           >
-            <div
-              style={{
-                display: 'flex',
-                height: 'inherit',
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
+            <IconContainer>
               <img
                 src={iconSwitcher(location.weather[0].main)}
-                style={{ width: 50, height: 50 }}
                 alt='weather-icon'
               />
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'left',
-                justifyContent: 'space-around',
-              }}
-            >
-              <h2 style={{ fontSize: '40px', margin: 0 }}>
-                {location.main.temp.toFixed(0)}°
-              </h2>
-              <p
-                style={{
-                  fontSize: '16px',
-                  fontWeight: 500,
-                  margin: 0,
-                  textTransform: 'uppercase',
-                }}
-              >
-                {location.name}
-              </p>
-            </div>
-            <div
-              style={{
-                display: 'flex',
-                height: 'inherit',
-              }}
-            >
+            </IconContainer>
+            <WeatherInfoContainer>
+              <h2>{location.main.temp.toFixed(0)}°</h2>
+              <p>{location.name}</p>
+            </WeatherInfoContainer>
+            <ButtonContainer>
               <DeleteButton
-                onClick={(event) => {
-                  // {onDeleteLocation}
+                onClick={() => {
                   const updatedLocations = locations.filter(
                     (item) => item.id !== location.id
                   );
                   setLocations([...updatedLocations]);
+                  setError('');
                 }}
                 type='button'
               >
-                <img
-                  src={deleteIcon}
-                  alt='delete-icon'
-                  style={{ height: '14px', width: '14px' }}
-                />
+                <img src={deleteIcon} alt='delete-icon' />
               </DeleteButton>
-            </div>
+            </ButtonContainer>
           </StyledWeatherCard>
         ))}
       </WeatherCardContainer>
@@ -176,84 +154,8 @@ const CurrentWeather = () => {
           Clear all
         </DeleteAllButton>
       )}
-    </StyledWeatherContainer>
+    </StyledWeatherWrapper>
   );
 };
-
-//Styling
-const StyledWeatherContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* margin-bottom: 20px; */
-  width: 100vw;
-`;
-
-const WeatherCardContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  /* margin-bottom: 15px; */
-  width: 100vw;
-  justify-content: center;
-  align-items: center;
-  @media (min-width: 992px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 850px;
-  }
-`;
-
-const StyledWeatherCard = styled.div`
-  display: grid;
-  grid-template-columns: 120px auto 50px;
-  align-items: center;
-  border-radius: 5px;
-  width: 90vw;
-  max-width: 450px;
-  height: 110px;
-  margin: 5px;
-  &.mid-temperature {
-    background-color: #fac710;
-  }
-  &.high-temperature {
-    background-color: #f24726;
-  }
-  &.low-temperature {
-    background-color: #2d9bf0;
-  }
-  &.default {
-    background-color: #fff;
-  }
-  @media (min-width: 992px) {
-    grid-template-columns: 110px auto 50px;
-    width: 30%;
-  }
-  /* background-color: ${(props) => props.BackgroundSwitcher || 'white'}; */
-`;
-
-const DeleteButton = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  border: 0;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  background-color: #eee;
-  cursor: pointer;
-`;
-
-const DeleteAllButton = styled.button`
-  width: 100px;
-  height: 40px;
-  background-color: #fff;
-  border-radius: 18px;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  margin: 5px;
-`;
 
 export default CurrentWeather;
