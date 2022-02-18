@@ -53,10 +53,10 @@ const CurrentWeather = () => {
     return coldest.main.temp - warmest.main.temp;
   });
 
-  const backgroundSwitcher = (locationTemperature) => {
-    // let locationTemperature = locations.map((location) => location.main.temp);
-
-    if (locationTemperature > 0 && locationTemperature < 20) {
+  const backgroundSwitcher = (locationTemperature, weather) => {
+    if (weather === 'Rain' || weather === 'Drizzle') {
+      return 'low-temperature';
+    } else if (locationTemperature > 0 && locationTemperature < 20) {
       return 'mid-temperature';
     } else if (locationTemperature > 19) {
       return 'high-temperature';
@@ -66,19 +66,6 @@ const CurrentWeather = () => {
       return 'default';
     }
   };
-
-  // const BackgroundSwitcher = (temperature) => {
-  //   switch (temperature) {
-  //     case temperature > 0:
-  //       return 'yellow';
-  //     case temperature > 19:
-  //       return 'red';
-  //     case temperature < 1:
-  //       return 'blue';
-  //     default:
-  //       return '';
-  //   }
-  // };
 
   const iconSwitcher = (weather) => {
     if (weather === 'Clouds') {
@@ -117,7 +104,10 @@ const CurrentWeather = () => {
         {locations.map((location) => (
           <StyledWeatherCard
             key={location.id}
-            className={backgroundSwitcher(location.main.temp)}
+            className={backgroundSwitcher(
+              location.main.temp,
+              location.weather[0].main
+            )}
           >
             <div
               style={{
