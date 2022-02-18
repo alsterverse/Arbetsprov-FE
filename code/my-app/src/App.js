@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from './components/Header';
-import styled from 'styled-components';
 
 import WeatherList from './components/WeatherList';
 
