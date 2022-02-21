@@ -39,8 +39,3 @@ Gör en pull request med din lösning till detta repo och meddela din kontaktper
 
 ![Desktop design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/desktop.png)
 ![Mobil design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/mobile.png)
-
-## Info from Johanna absout the project
-
-Jag använde den här väder-API:n istället https://openweathermap.org/api
-Se appen live här
