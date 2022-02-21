@@ -28,7 +28,7 @@ export const StyledWeatherCard = styled.div`
   &.high-temperature {
     background-color: #f24726;
   }
-  &.low-temperature {
+  &.cold-or-rain {
     background-color: #2d9bf0;
   }
   &.default {

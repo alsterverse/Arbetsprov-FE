@@ -13,9 +13,6 @@ Resultaten av sökningarna ska sparas och man ska även kunna ta bort dom.
 - Om det regnar ska kortet vara blått oavsett temperatur
 - Om staden du söker på inte ger något svar från API:et ska meddelandet "Det finns ingen stad som matchar din sökning" visas under input-fältet
 - Hitta en ikon i Figma-dokumentet som matchar resultatet av sökningen. Använd ×-ikonen som fallback.
-
-  Done:
-
 - De sparade resultaten ska sorteras efter temperatur
 - I desktopversionen ska korten stackas i rader om 3
 - Appen ska fungera och se likadan ut i Chrome, Firefox, Edge och Safari.
@@ -42,3 +39,8 @@ Gör en pull request med din lösning till detta repo och meddela din kontaktper
 
 ![Desktop design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/desktop.png)
 ![Mobil design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/mobile.png)
+
+## Info from Johanna absout the project
+
+Jag använde den här väder-API:n istället https://openweathermap.org/api
+Se appen live här

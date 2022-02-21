@@ -20,7 +20,7 @@ import {
   WeatherInfoContainer,
 } from './StyledWeatherCard';
 
-const StyledWeatherWrapper = styled.div`
+const WeatherListWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,7 +28,7 @@ const StyledWeatherWrapper = styled.div`
   width: 100vw;
 `;
 
-const CurrentWeather = () => {
+const WeatherList = () => {
   const [locations, setLocations] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [error, setError] = useState('');
@@ -51,7 +51,6 @@ const CurrentWeather = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.cod === 200 && isNewLocation(data.id)) {
           setLocations([data, ...locations]);
         } else if (data.cod === '404') {
@@ -61,9 +60,6 @@ const CurrentWeather = () => {
         }
       });
 
-    console.log(locations.length);
-    console.log(locations);
-    console.log(error);
     setSearchValue('');
   };
 
@@ -74,13 +70,13 @@ const CurrentWeather = () => {
 
   const backgroundSwitcher = (locationTemperature, weather) => {
     if (weather === 'Rain' || weather === 'Drizzle') {
-      return 'low-temperature';
+      return 'cold-or-rain';
     } else if (locationTemperature > 0 && locationTemperature < 20) {
       return 'mid-temperature';
     } else if (locationTemperature > 19) {
       return 'high-temperature';
     } else if (locationTemperature < 1) {
-      return 'low-temperature';
+      return 'cold-or-rain';
     } else {
       return 'default';
     }
@@ -106,7 +102,7 @@ const CurrentWeather = () => {
   };
 
   return (
-    <StyledWeatherWrapper>
+    <WeatherListWrapper>
       <SearchLocation
         onFormSubmit={onFormSubmit}
         searchValue={searchValue}
@@ -154,8 +150,8 @@ const CurrentWeather = () => {
           Clear all
         </DeleteAllButton>
       )}
-    </StyledWeatherWrapper>
+    </WeatherListWrapper>
   );
 };
 
-export default CurrentWeather;
+export default WeatherList;

@@ -27,13 +27,9 @@ const SearchBar = styled.input`
   height: 60px;
   width: 100%;
   font-size: 20px;
-  background-size: 20px;
   background-color: #fff;
-  background-repeat: no-repeat;
-  background-position: left center;
   padding-left: 20px;
   border: none;
-  box-shadow: none;
   -webkit-appearance: none;
 `;
 
