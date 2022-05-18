@@ -1,4 +1,4 @@
-Isotop Arbetsprov
+Alster Arbetsprov
 ===============================
 Forka detta projekt och bygg en app i React där man kan skriva in namnet på en stad och som visar vilket väder det är där.
 Sidan ska vara responsiv och se bra ut i alla storlekar (mobil till desktop).
