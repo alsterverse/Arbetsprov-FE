@@ -29,7 +29,7 @@ I Figma kan du exportera ikoner och liknande som SVG.
 * Vi vill få en känsla av hur du tar dig an problem och hur du strukturerar din kod
 
 ## Redo att skicka in?
-Gör en pull request med din lösning till detta repo och meddela din kontaktperson på Isotop. Vi bokar sedan in ett möte där vi tillsammans går igenom provet med dig.
+Gör en pull request med din lösning till detta repo och meddela din kontaktperson på Alster. Vi bokar sedan in ett möte där vi tillsammans går igenom provet med dig.
 
 ![Desktop design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/desktop.png)
 ![Mobil design](https://raw.githubusercontent.com/isotopsweden/Arbetsprov-FE/main/mobile.png)
