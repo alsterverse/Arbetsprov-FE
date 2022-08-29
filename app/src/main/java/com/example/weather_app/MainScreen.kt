@@ -30,7 +30,7 @@ fun HowIsTheWeatherText() {
 }
 
 @Composable
-fun DisplaySearchLocation(){
+fun DisplaySearchLocation(viewModel: MainViewModel?) {
     Box(
         contentAlignment = Alignment.CenterStart, modifier = Modifier
             .size(200.dp, 50.dp)
@@ -49,9 +49,9 @@ fun DisplaySearchLocation(){
             )
 
             IconButton(
-                onClick = { },
+                onClick = { viewModel?.onClickAddLocation(text.text) },
                 modifier = Modifier.size(20.dp)
-            ) { // TODO: Add place
+            ) {
                 Icon(
                     painter = painterResource(id = android.R.drawable.ic_menu_add),
                     contentDescription = null
@@ -61,8 +61,33 @@ fun DisplaySearchLocation(){
     }
 }
 
+fun Int.toTemperatureString() : String{
+    return "$this°"
+}
+
 @Composable
-fun DisplayLogo(resource: Int){
+fun DisplayWeatherCard(card: WeatherCard) {
+    val color = when {
+        card.temperature <= 0 -> Color.Blue
+        card.temperature <= 20 -> Color.Yellow
+        else -> Color.Red
+    }
+
+    val icon = painterResource(id = R.drawable.cloudy)
+
+    Box(modifier = Modifier.background(color)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Image(painter = icon, contentDescription = "weather icon")
+            Column {
+                Text(text = card.temperature.toTemperatureString())
+                Text(text = card.location)
+            }
+        }
+    }
+}
+
+@Composable
+fun DisplayLogo(resource: Int) {
     Box {
         Image(
             painter = painterResource(id = resource),

@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -29,16 +31,18 @@ import com.example.weather_app.ui.theme.WeatherAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel = MainViewModel()
         setContent {
             WeatherAppTheme() {
-                MainDisplay()
+                MainDisplay(viewModel)
             }
         }
     }
 }
 
 @Composable
-fun MainDisplay() {
+fun MainDisplay(viewModel: MainViewModel?) {
+
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -47,11 +51,14 @@ fun MainDisplay() {
     {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+            verticalArrangement = Arrangement.spacedBy(20.dp),
         ) {
             Spacer(modifier = Modifier.height(0.dp)) // 300 iq move
             HowIsTheWeatherText()
-            DisplaySearchLocation()
+            DisplaySearchLocation(viewModel)
+            viewModel?.weatherList?.collectAsState()?.value?.forEach {
+                DisplayWeatherCard(card = it)
+            }
         }
         DisplayLogo(resource = R.drawable.alster)
     }
@@ -60,5 +67,5 @@ fun MainDisplay() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MainDisplay()
+    MainDisplay(null)
 }
