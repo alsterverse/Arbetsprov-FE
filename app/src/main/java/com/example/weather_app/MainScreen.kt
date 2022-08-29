@@ -16,8 +16,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 
 @Composable
 fun HowIsTheWeatherText() {
@@ -73,11 +75,13 @@ fun DisplayWeatherCard(card: WeatherCard) {
         else -> Color.Red
     }
 
-    val icon = painterResource(id = R.drawable.cloudy)
-
     Box(modifier = Modifier.background(color)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Image(painter = icon, contentDescription = "weather icon")
+            AsyncImage(
+                model = card.weatherIconUrl,
+                contentDescription = "",
+                modifier = Modifier.size(100.dp)
+            )
             Column {
                 Text(text = card.temperature.toTemperatureString())
                 Text(text = card.location)
@@ -95,4 +99,10 @@ fun DisplayLogo(resource: Int) {
             Modifier.size(100.dp)
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPresiew2() {
+    MainDisplay(null, listOf(WeatherCard(1, "Stockholm", "")))
 }

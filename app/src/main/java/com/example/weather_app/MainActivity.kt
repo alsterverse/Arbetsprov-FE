@@ -34,14 +34,14 @@ class MainActivity : ComponentActivity() {
         val viewModel = MainViewModel()
         setContent {
             WeatherAppTheme() {
-                MainDisplay(viewModel)
+                MainDisplay(viewModel, viewModel?.weatherList?.collectAsState()?.value)
             }
         }
     }
 }
 
 @Composable
-fun MainDisplay(viewModel: MainViewModel?) {
+fun MainDisplay(viewModel: MainViewModel?, list: List<WeatherCard>) {
 
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
@@ -56,7 +56,7 @@ fun MainDisplay(viewModel: MainViewModel?) {
             Spacer(modifier = Modifier.height(0.dp)) // 300 iq move
             HowIsTheWeatherText()
             DisplaySearchLocation(viewModel)
-            viewModel?.weatherList?.collectAsState()?.value?.forEach {
+            list.forEach {
                 DisplayWeatherCard(card = it)
             }
         }
@@ -67,5 +67,5 @@ fun MainDisplay(viewModel: MainViewModel?) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MainDisplay(null)
+    MainDisplay(null, listOf(WeatherCard(1, "Stockholm", "")))
 }
