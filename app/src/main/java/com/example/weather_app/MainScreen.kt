@@ -1,6 +1,5 @@
 package com.example.weather_app
 
-import android.R
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -16,7 +15,19 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+
+@Composable
+fun HowIsTheWeatherText() {
+    Text(
+        text = "Hur är vädret i...",
+        modifier = Modifier.fillMaxWidth(),
+        fontSize = 30.sp,
+        textAlign = TextAlign.Center
+    )
+}
 
 @Composable
 fun DisplaySearchLocation(){

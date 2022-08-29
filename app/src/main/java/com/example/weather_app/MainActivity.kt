@@ -38,16 +38,6 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun HowIsTheWeatherText() {
-    Text(
-        text = "Hur är vädret i...",
-        modifier = Modifier.fillMaxWidth(),
-        fontSize = 30.sp,
-        textAlign = TextAlign.Center
-    )
-}
-
-@Composable
 fun MainDisplay() {
     Column(
         verticalArrangement = Arrangement.SpaceBetween,
