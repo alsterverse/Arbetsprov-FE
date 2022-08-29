@@ -53,7 +53,7 @@ fun DisplaySearchLocation(){
                 modifier = Modifier.size(20.dp)
             ) { // TODO: Add place
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_menu_add),
+                    painter = painterResource(id = android.R.drawable.ic_menu_add),
                     contentDescription = null
                 )
             }
