@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ComposeTest" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/purple_200</item>
+<!--        <item name="android:windowBackground">@android:color/background_light</item>-->
+        <item name="android:windowBackground">@color/pale</item>
+    </style>
+</resources>
